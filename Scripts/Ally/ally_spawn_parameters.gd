@@ -8,7 +8,8 @@ extends Node
 func _ready():
 	var ally_wait_time = 1
 	while (!Global.game_over):
-		var ally_position = randi_range(0, 3)
+		var ally_position = 4
+		#var ally_position = randi_range(0, 3)
 		print("ESPERAMOS: ", ally_wait_time, " SEGUNDOS")
 		await get_tree().create_timer(ally_wait_time).timeout
 		if ally_position == 0:

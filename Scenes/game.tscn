@@ -1,18 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://bqnmbp5741x0q"]
+[gd_scene load_steps=13 format=3 uid="uid://bqnmbp5741x0q"]
 
-[ext_resource type="PackedScene" uid="uid://ylbtwpucf5mg" path="res://Scenes/house.tscn" id="1_a4uf4"]
+[ext_resource type="PackedScene" uid="uid://ylbtwpucf5mg" path="res://Scenes/Enviorment/house.tscn" id="1_a4uf4"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_tkxn7"]
-[ext_resource type="PackedScene" uid="uid://evnqni7eeisa" path="res://Scenes/character.tscn" id="2_p8f8y"]
 [ext_resource type="PackedScene" uid="uid://c5kx6w17yi6b6" path="res://Scenes/Allies/ally_spawn_point.tscn" id="3_a64an"]
 [ext_resource type="PackedScene" uid="uid://c7aqqhj6qnbbu" path="res://Scenes/Allies/ally.tscn" id="3_dunpe"]
-[ext_resource type="PackedScene" uid="uid://w8dcr2bvpbh3" path="res://Scenes/Enemies/banshee.tscn" id="3_gidkh"]
-[ext_resource type="PackedScene" uid="uid://i318cngymxmo" path="res://Scenes/Enemies/ghost.tscn" id="4_vrajn"]
-[ext_resource type="PackedScene" uid="uid://l2qmj8realvi" path="res://Scenes/scene_transition_animation.tscn" id="7_gtth6"]
-[ext_resource type="PackedScene" uid="uid://cc33icdwy2b4u" path="res://Scenes/Enemies/vampire_spawner.tscn" id="8_d4chx"]
+[ext_resource type="PackedScene" uid="uid://w8dcr2bvpbh3" path="res://Scenes/Enemies/Banshee/banshee.tscn" id="3_gidkh"]
+[ext_resource type="PackedScene" uid="uid://i318cngymxmo" path="res://Scenes/Enemies/Ghost/ghost.tscn" id="4_vrajn"]
+[ext_resource type="PackedScene" uid="uid://l2qmj8realvi" path="res://Scenes/Enviorment/scene_transition_animation.tscn" id="7_gtth6"]
+[ext_resource type="PackedScene" uid="uid://cc33icdwy2b4u" path="res://Scenes/Enemies/Vampire/vampire_spawner.tscn" id="8_d4chx"]
 [ext_resource type="Script" path="res://Scripts/Ally/ally_spawn_parameters.gd" id="8_tarxs"]
-[ext_resource type="PackedScene" uid="uid://byjs6338k5mol" path="res://Scenes/door.tscn" id="10_fdr55"]
+[ext_resource type="PackedScene" uid="uid://byjs6338k5mol" path="res://Scenes/Enviorment/door.tscn" id="10_fdr55"]
 [ext_resource type="Script" path="res://Scripts/vampire/vampire_spawn_parameters.gd" id="11_y1gko"]
-[ext_resource type="PackedScene" uid="uid://b705ygnajy0lf" path="res://Scenes/Enemies/fairy.tscn" id="13_0kfts"]
+[ext_resource type="PackedScene" uid="uid://b3qtp5og4ky8t" path="res://Scenes/player.tscn" id="15_shpjv"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_tkxn7")
@@ -60,9 +59,6 @@ spawn_direction = 3
 [node name="House" parent="." instance=ExtResource("1_a4uf4")]
 position = Vector2(-525, -356)
 
-[node name="Player" parent="." instance=ExtResource("2_p8f8y")]
-position = Vector2(-4, 0)
-
 [node name="scene_transition_animation" parent="." instance=ExtResource("7_gtth6")]
 visible = false
 position = Vector2(-1927, -1198)
@@ -89,6 +85,5 @@ position = Vector2(-67, -319)
 rotation = -0.0163252
 scale = Vector2(1.94458, 1.82181)
 
-[node name="Fairy" parent="." instance=ExtResource("13_0kfts")]
-position = Vector2(753, -696)
-scale = Vector2(0.150184, 0.148294)
+[node name="Player" parent="." instance=ExtResource("15_shpjv")]
+position = Vector2(2, -6)

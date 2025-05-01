@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://byjs6338k5mol"]
+
+[ext_resource type="Texture2D" uid="uid://dfw3dn7ul6som" path="res://assets/Sprites/Door.png" id="1_fqvvy"]
+[ext_resource type="Script" path="res://Scripts/open_door_zone.gd" id="2_uqaep"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fq1ei"]
+size = Vector2(153.819, 86)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxsph"]
+size = Vector2(98, 20)
+
+[node name="door" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.185606, 0.0334448)
+texture = ExtResource("1_fqvvy")
+
+[node name="open_door_zone" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_uqaep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="open_door_zone"]
+light_mask = 2
+visibility_layer = 2
+scale = Vector2(1.00118, 1)
+shape = SubResource("RectangleShape2D_fq1ei")
+debug_color = Color(1.20327e-06, 0.643599, 0.297039, 0.42)
+
+[node name="door_collision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door_collision"]
+shape = SubResource("RectangleShape2D_hxsph")
+debug_color = Color(0, 0, 1, 0.419608)
+
+[connection signal="area_entered" from="open_door_zone" to="open_door_zone" method="_on_area_entered"]
+[connection signal="body_entered" from="open_door_zone" to="open_door_zone" method="_on_body_entered"]
