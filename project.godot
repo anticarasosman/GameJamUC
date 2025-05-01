@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="GameJamUC"
-run/main_scene="res://Scenes/game.tscn"
+run/main_scene="res://Scenes/game_guille.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://Scripts/global.gd"
+Global="*res://scripts/global.gd"
 
 [input]
 

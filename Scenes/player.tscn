@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3qtp5og4ky8t"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_w8ds6"]
+[ext_resource type="Texture2D" uid="uid://bnh7mb78r8aqo" path="res://icon.svg" id="2_br1w5"]
+[ext_resource type="Script" path="res://scripts/mouse.gd" id="2_c5lt4"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a4aqy"]
+cull_mode = 1
+polygon = PackedVector2Array(-35, 36, 34, 36, 35, -36, 13, -36, 111.998, -455, -109.002, -456, -14, -36, -35, -36)
+
+[sub_resource type="Gradient" id="Gradient_akb4d"]
+offsets = PackedFloat32Array(0, 0.63)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uhpct"]
+gradient = SubResource("Gradient_akb4d")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ulce"]
+size = Vector2(59.75, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_coi6r"]
+size = Vector2(138, 134)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_w8ds6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.825, 0.825)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+script = ExtResource("2_c5lt4")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Marker2D"]
+rotation = 1.5708
+occluder = SubResource("OccluderPolygon2D_a4aqy")
+
+[node name="Light" type="Node2D" parent="Marker2D"]
+
+[node name="TextureLight" type="PointLight2D" parent="Marker2D/Light"]
+position = Vector2(0, 3.33786e-06)
+scale = Vector2(10, 10)
+energy = 0.59
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+texture = SubResource("GradientTexture2D_uhpct")
+
+[node name="Shadow" type="PointLight2D" parent="Marker2D/Light"]
+position = Vector2(-1.13249e-05, 1.15037e-05)
+scale = Vector2(2.76563, 2.76563)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_uhpct")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+rotation = 1.5712
+scale = Vector2(0.570313, 0.570313)
+texture = ExtResource("2_br1w5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7ulce")
+
+[node name="Player_interaction" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_interaction"]
+shape = SubResource("RectangleShape2D_coi6r")
+debug_color = Color(2.31028e-06, 0.649351, 0.1473, 0.42)
+
+[connection signal="area_entered" from="Player_interaction" to="." method="_on_player_interaction_area_entered"]
