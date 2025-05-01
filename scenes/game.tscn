@@ -1,130 +1,94 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7vq16s0f5ftn"]
+[gd_scene load_steps=14 format=3 uid="uid://bqnmbp5741x0q"]
 
-[ext_resource type="PackedScene" uid="uid://b3qtp5og4ky8t" path="res://scenes/player.tscn" id="1_nax2m"]
-[ext_resource type="Texture2D" uid="uid://0e4upq85hgio" path="res://icon.svg" id="2_wgjlw"]
-[ext_resource type="PackedScene" uid="uid://dgvvufqh3438l" path="res://scenes/shadow_caster.tscn" id="2_y5foy"]
-[ext_resource type="PackedScene" uid="uid://cbwylhr3igog6" path="res://scenes/window.tscn" id="4_ah80c"]
-[ext_resource type="PackedScene" uid="uid://cnv4k5mi3sn1y" path="res://scenes/vampire.tscn" id="5_t211g"]
-[ext_resource type="LabelSettings" uid="uid://b46t7wo2p18ko" path="res://assets/vamp.tres" id="6_xo0dw"]
-
-[sub_resource type="Theme" id="Theme_tj7b3"]
-
-[sub_resource type="FontVariation" id="FontVariation_p3e1m"]
+[ext_resource type="PackedScene" uid="uid://ylbtwpucf5mg" path="res://Scenes/house.tscn" id="1_a4uf4"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_tkxn7"]
+[ext_resource type="PackedScene" uid="uid://evnqni7eeisa" path="res://Scenes/character.tscn" id="2_p8f8y"]
+[ext_resource type="PackedScene" uid="uid://c5kx6w17yi6b6" path="res://Scenes/Allies/ally_spawn_point.tscn" id="3_a64an"]
+[ext_resource type="PackedScene" uid="uid://c7aqqhj6qnbbu" path="res://Scenes/Allies/ally.tscn" id="3_dunpe"]
+[ext_resource type="PackedScene" uid="uid://w8dcr2bvpbh3" path="res://Scenes/Enemies/banshee.tscn" id="3_gidkh"]
+[ext_resource type="PackedScene" uid="uid://i318cngymxmo" path="res://Scenes/Enemies/ghost.tscn" id="4_vrajn"]
+[ext_resource type="PackedScene" uid="uid://l2qmj8realvi" path="res://Scenes/scene_transition_animation.tscn" id="7_gtth6"]
+[ext_resource type="PackedScene" uid="uid://cc33icdwy2b4u" path="res://Scenes/Enemies/vampire_spawner.tscn" id="8_d4chx"]
+[ext_resource type="Script" path="res://Scripts/Ally/ally_spawn_parameters.gd" id="8_tarxs"]
+[ext_resource type="PackedScene" uid="uid://byjs6338k5mol" path="res://Scenes/door.tscn" id="10_fdr55"]
+[ext_resource type="Script" path="res://Scripts/vampire/vampire_spawn_parameters.gd" id="11_y1gko"]
+[ext_resource type="PackedScene" uid="uid://b705ygnajy0lf" path="res://Scenes/Enemies/fairy.tscn" id="13_0kfts"]
 
 [node name="Game" type="Node2D"]
-position = Vector2(0, 184)
+script = ExtResource("1_tkxn7")
+ally_scene = ExtResource("3_dunpe")
+vampire_scene = ExtResource("3_dunpe")
+banshee_scene = ExtResource("3_gidkh")
+ghost_scene = ExtResource("4_vrajn")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(573.75, 133.25)
-scale = Vector2(9.03515, 5.04297)
-texture = ExtResource("2_wgjlw")
-metadata/_edit_lock_ = true
+[node name="Ally_spawners" type="Node" parent="."]
+script = ExtResource("8_tarxs")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-position = Vector2(0, -216)
-color = Color(0.0118855, 0.0154818, 0.0776249, 1)
-metadata/_edit_lock_ = true
+[node name="Ally_spawn_point" parent="Ally_spawners" instance=ExtResource("3_a64an")]
+position = Vector2(2, -883)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(0, -216)
-metadata/_edit_lock_ = true
+[node name="Ally_spawn_point2" parent="Ally_spawners" instance=ExtResource("3_a64an")]
+position = Vector2(67, 796)
+spawn_direction = 1
 
-[node name="Player" parent="." instance=ExtResource("1_nax2m")]
-position = Vector2(572, 175)
-scale = Vector2(0.6, 0.6)
-metadata/_edit_lock_ = true
+[node name="Ally_spawn_point3" parent="Ally_spawners" instance=ExtResource("3_a64an")]
+position = Vector2(939, -53)
+spawn_direction = 2
 
-[node name="vampire" parent="." instance=ExtResource("5_t211g")]
-position = Vector2(613, -34)
-rotation = 1.5701
-metadata/_edit_lock_ = true
+[node name="Ally_spawn_point4" parent="Ally_spawners" instance=ExtResource("3_a64an")]
+position = Vector2(-929, -8)
+spawn_direction = 3
 
-[node name="MAP" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
+[node name="Vampire_spawners" type="Node" parent="."]
+script = ExtResource("11_y1gko")
 
-[node name="WALLS" type="Node2D" parent="MAP"]
-position = Vector2(32, -224)
-scale = Vector2(0.992961, 0.992961)
+[node name="vampire_spawner" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
+position = Vector2(2, -883)
 
-[node name="shadowCaster3" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
-position = Vector2(370.609, 313.758)
-scale = Vector2(0.31518, 1)
+[node name="vampire_spawner2" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
+position = Vector2(67, 796)
+spawn_direction = 1
 
-[node name="shadowCaster" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
-position = Vector2(514.609, 249.758)
+[node name="vampire_spawner3" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
+position = Vector2(939, -53)
+spawn_direction = 2
 
-[node name="shadowCaster2" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
-position = Vector2(658.609, 249.758)
+[node name="vampire_spawner4" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
+position = Vector2(-929, -8)
+spawn_direction = 3
 
-[node name="shadowCaster4" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
-position = Vector2(442.609, 249.758)
+[node name="House" parent="." instance=ExtResource("1_a4uf4")]
+position = Vector2(-525, -356)
 
-[node name="shadowCaster5" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
-position = Vector2(370.609, 249.758)
+[node name="Player" parent="." instance=ExtResource("2_p8f8y")]
+position = Vector2(-4, 0)
 
-[node name="shadowCaster6" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
-position = Vector2(370.609, 441.758)
+[node name="scene_transition_animation" parent="." instance=ExtResource("7_gtth6")]
+visible = false
+position = Vector2(-1927, -1198)
 
-[node name="shadowCaster7" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
-position = Vector2(514.609, 505.758)
+[node name="Doors" type="Node" parent="."]
 
-[node name="shadowCaster8" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
-position = Vector2(370.609, 505.758)
+[node name="door" parent="Doors" instance=ExtResource("10_fdr55")]
+position = Vector2(-438, 73)
+rotation = 1.57169
+scale = Vector2(1.91485, 1.95264)
 
-[node name="shadowCaster10" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
-position = Vector2(370.609, 377.758)
+[node name="door2" parent="Doors" instance=ExtResource("10_fdr55")]
+position = Vector2(432, -137)
+rotation = 1.57169
+scale = Vector2(1.85405, 2.3113)
 
-[node name="shadowCaster11" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
-position = Vector2(586.609, 505.758)
+[node name="door3" parent="Doors" instance=ExtResource("10_fdr55")]
+position = Vector2(104, 262)
+rotation = -0.0163252
+scale = Vector2(1.94458, 1.82181)
 
-[node name="shadowCaster12" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
-position = Vector2(658.609, 505.758)
+[node name="door4" parent="Doors" instance=ExtResource("10_fdr55")]
+position = Vector2(-67, -319)
+rotation = -0.0163252
+scale = Vector2(1.94458, 1.82181)
 
-[node name="shadowCaster13" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
-position = Vector2(658.609, 313.758)
-
-[node name="shadowCaster9" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
-position = Vector2(658.609, 441.758)
-
-[node name="WINDOWS" type="Node2D" parent="MAP"]
-
-[node name="window2" parent="MAP/WINDOWS" instance=ExtResource("4_ah80c")]
-position = Vector2(698, 150)
-rotation = 1.56922
-scale = Vector2(0.278238, 0.255998)
-skew = -0.000884175
-
-[node name="window" parent="MAP/WINDOWS" instance=ExtResource("4_ah80c")]
-position = Vector2(471, 286)
-scale = Vector2(0.32, 0.4)
-
-[node name="VampAttack" type="CanvasLayer" parent="."]
-
-[node name="InviteLabel" type="Label" parent="VampAttack"]
-anchors_preset = -1
-anchor_top = 0.145062
-anchor_right = 0.152778
-anchor_bottom = 0.214506
-offset_left = 483.0
-offset_top = 150.0
-offset_right = 523.0
-offset_bottom = 173.0
-label_settings = ExtResource("6_xo0dw")
-uppercase = true
-metadata/_edit_use_anchors_ = true
-
-[node name="ResponseInput" type="LineEdit" parent="VampAttack"]
-anchors_preset = -1
-anchor_left = 0.09
-anchor_top = 0.20679
-anchor_right = 0.125814
-anchor_bottom = 0.20679
-offset_left = 370.32
-offset_top = 231.584
-offset_right = 541.063
-offset_bottom = 306.0
-theme = SubResource("Theme_tj7b3")
-theme_override_fonts/font = SubResource("FontVariation_p3e1m")
-theme_override_font_sizes/font_size = 32
-expand_to_text_length = true
-metadata/_edit_use_anchors_ = true
+[node name="Fairy" parent="." instance=ExtResource("13_0kfts")]
+position = Vector2(753, -696)
+scale = Vector2(0.150184, 0.148294)
