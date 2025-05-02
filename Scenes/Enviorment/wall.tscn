@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfpfp1ab3arpn"]
+
+[ext_resource type="Texture2D" uid="uid://bnh7mb78r8aqo" path="res://icon.svg" id="1_m8v6r"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x3hva"]
+blend_mode = 1
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_33jqf"]
+cull_mode = 1
+polygon = PackedVector2Array(49.9071, 62.1683, 55.4781, 60.1871, 61.0665, 52.2058, 61.3677, -51.7937, 52.1214, -61.8248, -51.768, -60.1746, -61.0665, -52.2059, -61.3735, 53.7936, -50.2721, 63.8311)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fs6ef"]
+size = Vector2(66, 63)
+
+[node name="shadowCaster" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+rotation = 3.13847
+scale = Vector2(0.539063, 0.5)
+texture = ExtResource("1_m8v6r")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+material = SubResource("CanvasItemMaterial_x3hva")
+occluder = SubResource("OccluderPolygon2D_33jqf")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_fs6ef")

@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://l2qmj8realvi"]
+
+[sub_resource type="Animation" id="Animation_p3x4i"]
+resource_name = "beetween_wave"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.388235), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_je6qh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yw4sw"]
+_data = {
+"RESET": SubResource("Animation_je6qh"),
+"beetween_wave": SubResource("Animation_p3x4i")
+}
+
+[node name="scene_transition_animation" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 5138.0
+offset_bottom = 3374.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yw4sw")
+}

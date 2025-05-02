@@ -1,0 +1,113 @@
+[gd_scene load_steps=18 format=3 uid="uid://bqnmbp5741x0q"]
+
+[ext_resource type="PackedScene" uid="uid://ylbtwpucf5mg" path="res://Scenes/Enviorment/house.tscn" id="1_a4uf4"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_tkxn7"]
+[ext_resource type="PackedScene" uid="uid://c5kx6w17yi6b6" path="res://Scenes/Allies/ally_spawn_point.tscn" id="3_a64an"]
+[ext_resource type="PackedScene" uid="uid://c7aqqhj6qnbbu" path="res://Scenes/Allies/ally.tscn" id="3_dunpe"]
+[ext_resource type="PackedScene" uid="uid://w8dcr2bvpbh3" path="res://Scenes/Enemies/Banshee/banshee.tscn" id="3_gidkh"]
+[ext_resource type="Texture2D" uid="uid://wdjtd4k5ohaf" path="res://assets/Sprites/Ghost.png" id="4_5i4i6"]
+[ext_resource type="PackedScene" uid="uid://drbstyv54yryb" path="res://Scenes/Enemies/Ghost/ghost.tscn" id="4_vrajn"]
+[ext_resource type="Script" path="res://Scripts/ghost/ghost.gd" id="5_ya1ds"]
+[ext_resource type="PackedScene" uid="uid://l2qmj8realvi" path="res://Scenes/Enviorment/scene_transition_animation.tscn" id="7_gtth6"]
+[ext_resource type="PackedScene" uid="uid://cc33icdwy2b4u" path="res://Scenes/Enemies/Vampire/vampire_spawner.tscn" id="8_d4chx"]
+[ext_resource type="Script" path="res://Scripts/Ally/ally_spawn_parameters.gd" id="8_tarxs"]
+[ext_resource type="PackedScene" uid="uid://bnwjs1aoi15q0" path="res://Scenes/Enviorment/door.tscn" id="10_fdr55"]
+[ext_resource type="Script" path="res://Scripts/vampire/vampire_spawn_parameters.gd" id="11_y1gko"]
+[ext_resource type="PackedScene" uid="uid://bq74vpot0qvkv" path="res://Scenes/Enemies/Ghost/ghost_spawner.tscn" id="15_g7de8"]
+[ext_resource type="PackedScene" uid="uid://b3qtp5og4ky8t" path="res://Scenes/player.tscn" id="15_shpjv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ym2q3"]
+
+[sub_resource type="PackedScene" id="PackedScene_yfw3a"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("ghost", "Node2D", "Sprite2D", "scale", "texture", "Area2D", "script", "CollisionShape2D", "shape"),
+"node_count": 4,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 0, 0, 0, 0, 2, 2, -1, 2, 3, 0, 4, 1, 0, 0, 0, 5, 5, -1, 1, 6, 2, 0, 2, 0, 7, 7, -1, 1, 8, 3, 0),
+"variants": [Vector2(0.0402414, 0.0390764), ExtResource("4_5i4i6"), ExtResource("5_ya1ds"), SubResource("CircleShape2D_ym2q3")],
+"version": 3
+}
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_tkxn7")
+ally_scene = ExtResource("3_dunpe")
+vampire_scene = ExtResource("3_dunpe")
+banshee_scene = ExtResource("3_gidkh")
+ghost_scene = SubResource("PackedScene_yfw3a")
+
+[node name="Ally_spawners" type="Node" parent="."]
+script = ExtResource("8_tarxs")
+
+[node name="Ally_spawn_point" parent="Ally_spawners" instance=ExtResource("3_a64an")]
+position = Vector2(2, -883)
+
+[node name="Ally_spawn_point2" parent="Ally_spawners" instance=ExtResource("3_a64an")]
+position = Vector2(67, 796)
+spawn_direction = 1
+
+[node name="Ally_spawn_point3" parent="Ally_spawners" instance=ExtResource("3_a64an")]
+position = Vector2(939, -53)
+spawn_direction = 2
+
+[node name="Ally_spawn_point4" parent="Ally_spawners" instance=ExtResource("3_a64an")]
+position = Vector2(-929, -8)
+spawn_direction = 3
+
+[node name="Vampire_spawners" type="Node" parent="."]
+script = ExtResource("11_y1gko")
+
+[node name="vampire_spawner" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
+position = Vector2(2, -883)
+
+[node name="vampire_spawner2" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
+position = Vector2(67, 796)
+spawn_direction = 1
+
+[node name="vampire_spawner3" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
+position = Vector2(939, -53)
+spawn_direction = 2
+
+[node name="vampire_spawner4" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
+position = Vector2(-929, -8)
+spawn_direction = 3
+
+[node name="House" parent="." instance=ExtResource("1_a4uf4")]
+position = Vector2(-525, -356)
+
+[node name="scene_transition_animation" parent="." instance=ExtResource("7_gtth6")]
+visible = false
+position = Vector2(-1927, -1198)
+
+[node name="Doors" type="Node" parent="."]
+
+[node name="door" parent="Doors" instance=ExtResource("10_fdr55")]
+position = Vector2(-438, 73)
+rotation = 1.57169
+scale = Vector2(0.090322, 0.17811)
+
+[node name="door2" parent="Doors" instance=ExtResource("10_fdr55")]
+position = Vector2(432, -137)
+rotation = 1.57169
+scale = Vector2(0.107192, -0.168292)
+
+[node name="door3" parent="Doors" instance=ExtResource("10_fdr55")]
+position = Vector2(104, 262)
+rotation = -0.0163252
+scale = Vector2(0.123747, -0.17236)
+
+[node name="door4" parent="Doors" instance=ExtResource("10_fdr55")]
+position = Vector2(-67, -319)
+rotation = -0.0163252
+scale = Vector2(0.136831, 0.187057)
+
+[node name="Ghost_spawner" parent="." instance=ExtResource("15_g7de8")]
+player = NodePath("../Player")
+ghost_scene = ExtResource("4_vrajn")
+horizontal_range = 685
+vertical_range = 675
+
+[node name="Player" parent="." instance=ExtResource("15_shpjv")]
+position = Vector2(2, -6)

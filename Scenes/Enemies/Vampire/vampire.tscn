@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnv4k5mi3sn1y"]
+
+[ext_resource type="Script" path="res://Scripts/vampire/vampire.gd" id="1_f0ew0"]
+
+[sub_resource type="Gradient" id="Gradient_mk55t"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vaj2j"]
+gradient = SubResource("Gradient_mk55t")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxqds"]
+size = Vector2(168, 152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svfr8"]
+size = Vector2(540, 486)
+
+[node name="vampire" type="Node2D"]
+script = ExtResource("1_f0ew0")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 125.0
+offset_top = -129.0
+offset_right = 192.0
+offset_bottom = -99.0
+scale = Vector2(5.65768, 3.55976)
+
+[node name="LineEdit" type="LineEdit" parent="Label"]
+layout_mode = 0
+offset_left = -14.4936
+offset_top = -7.02294
+offset_right = 52.5689
+offset_bottom = 23.9771
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="VampireSprite" type="Sprite2D" parent="Area2D"]
+texture = SubResource("GradientTexture2D_vaj2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_lxqds")
+debug_color = Color(0.854902, 0.0784314, 0.0352941, 0.419608)
+
+[node name="Ask_player" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ask_player"]
+shape = SubResource("RectangleShape2D_svfr8")
+debug_color = Color(0.662745, 0.690196, 0, 0.247059)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

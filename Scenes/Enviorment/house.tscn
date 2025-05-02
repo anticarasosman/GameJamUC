@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ylbtwpucf5mg"]
+
+[ext_resource type="Texture2D" uid="uid://cagfij5y1kglg" path="res://assets/Sprites/image.png" id="1_6rxhu"]
+[ext_resource type="Texture2D" uid="uid://bdof3hyafs77e" path="res://assets/Sprites/XvZPy+ (1).png" id="1_cyfju"]
+
+[node name="House" type="Node2D"]
+
+[node name="Forest" type="Sprite2D" parent="."]
+position = Vector2(543, 279)
+scale = Vector2(2.01328, 2.12917)
+texture = ExtResource("1_cyfju")
+
+[node name="Room" type="Sprite2D" parent="."]
+position = Vector2(552, 332.75)
+scale = Vector2(1.87372, 1.48145)
+texture = ExtResource("1_6rxhu")

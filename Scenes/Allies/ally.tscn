@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7aqqhj6qnbbu"]
+[gd_scene load_steps=6 format=3 uid="uid://c7aqqhj6qnbbu"]
 
 [ext_resource type="Script" path="res://Scripts/Ally/ally.gd" id="1_767i0"]
-[ext_resource type="Texture2D" uid="uid://be02d6ql3ye8s" path="res://Sprites/Ally-removebg-preview.png" id="2_isgbx"]
+[ext_resource type="PackedScene" uid="uid://b705ygnajy0lf" path="res://Scenes/Enemies/Fairy/fairy.tscn" id="2_6yet0"]
+[ext_resource type="Texture2D" uid="uid://be02d6ql3ye8s" path="res://assets/Sprites/Ally-removebg-preview.png" id="2_isgbx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ynlrs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yk5eh"]
+size = Vector2(146.655, 168.984)
 
 [node name="Ally" type="Node2D"]
 scale = Vector2(5.42772, 4.89986)
 script = ExtResource("1_767i0")
+fairy_scene = ExtResource("2_6yet0")
 
 [node name="Ally Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.0426439, 0.0413534)
@@ -19,5 +24,20 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ynlrs")
+
+[node name="Ask_player" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ask_player"]
+shape = SubResource("RectangleShape2D_yk5eh")
+debug_color = Color(0.662745, 0.690196, 0, 0.247059)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="LineEdit" type="LineEdit" parent="Label"]
+layout_mode = 0
+offset_right = 67.0625
+offset_bottom = 31.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
