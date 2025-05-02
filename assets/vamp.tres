@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://b46t7wo2p18ko"]
+
+[sub_resource type="FontVariation" id="FontVariation_wp2pv"]
+
+[resource]
+font = SubResource("FontVariation_wp2pv")
+font_size = 32
+font_color = Color(0.795362, 0.113822, 2.88785e-06, 1)
+outline_size = 10
+outline_color = Color(0.77084, 0.770839, 0.770839, 1)

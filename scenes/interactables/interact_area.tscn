@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmp6adnak8w61"]
+
+[ext_resource type="Script" path="res://scripts/interact_area.gd" id="1_cyxga"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ye6vm"]
+
+[node name="InteractArea" type="Area2D"]
+collision_layer = 32
+collision_mask = 32
+monitoring = false
+script = ExtResource("1_cyxga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6.92, 6.92)
+shape = SubResource("CircleShape2D_ye6vm")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://br5g3251nwq5k"]
+
+[ext_resource type="Script" path="res://scenes/label.gd" id="1_yaj1f"]
+
+[node name="Riddle" type="Node2D"]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer"]
+layout_mode = 2
+text = "A"
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_yaj1f")
