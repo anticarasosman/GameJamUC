@@ -1,51 +1,52 @@
 [gd_scene load_steps=6 format=3 uid="uid://cnv4k5mi3sn1y"]
 
 [ext_resource type="Script" path="res://scripts/vampire/vampire.gd" id="1_f0ew0"]
+[ext_resource type="PackedScene" uid="uid://cmp6adnak8w61" path="res://scenes/interactables/interact_area.tscn" id="2_cixqh"]
 
 [sub_resource type="Gradient" id="Gradient_mk55t"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vaj2j"]
 gradient = SubResource("Gradient_mk55t")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxqds"]
-size = Vector2(168, 152)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_svfr8"]
-size = Vector2(540, 486)
+[sub_resource type="CircleShape2D" id="CircleShape2D_bcdak"]
 
 [node name="vampire" type="Node2D"]
 script = ExtResource("1_f0ew0")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 125.0
-offset_top = -129.0
-offset_right = 192.0
-offset_bottom = -99.0
-scale = Vector2(5.65768, 3.55976)
+[node name="InteractPlayer" parent="." instance=ExtResource("2_cixqh")]
+scale = Vector2(3.505, 3.505)
+monitoring = true
+interact_label = "InteractPlayer"
+interact_type = "VampAttack"
+interact_value = "\"E\" to Interact"
 
-[node name="LineEdit" type="LineEdit" parent="Label"]
-layout_mode = 0
-offset_left = -14.4936
-offset_top = -7.02294
-offset_right = 52.5689
-offset_bottom = 23.9771
+[node name="InteractDoor" parent="." instance=ExtResource("2_cixqh")]
+modulate = Color(0.813637, 0.168906, 0.338595, 1)
+self_modulate = Color(0.59028, 0.0703276, 0.239411, 1)
+position = Vector2(-1, 0)
+collision_layer = 35
+collision_mask = 35
+monitoring = true
+interact_label = "InteractDoor"
+interact_type = "Door"
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
-
-[node name="VampireSprite" type="Sprite2D" parent="Area2D"]
+[node name="VampireSprite" type="Sprite2D" parent="InteractDoor"]
+position = Vector2(1, 0)
 texture = SubResource("GradientTexture2D_vaj2j")
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_lxqds")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractDoor"]
+position = Vector2(1, 0)
+scale = Vector2(4.705, 4.705)
+shape = SubResource("CircleShape2D_bcdak")
 debug_color = Color(0.854902, 0.0784314, 0.0352941, 0.419608)
+metadata/_edit_lock_ = true
 
-[node name="Ask_player" type="Area2D" parent="."]
+[node name="KillTime" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -116.0
+offset_right = 19.0
+offset_bottom = -93.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ask_player"]
-shape = SubResource("RectangleShape2D_svfr8")
-debug_color = Color(0.662745, 0.690196, 0, 0.247059)
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="area_entered" from="InteractPlayer" to="." method="_on_interact_player_area_entered"]
+[connection signal="area_entered" from="InteractDoor" to="." method="_on_interact_door_area_entered"]

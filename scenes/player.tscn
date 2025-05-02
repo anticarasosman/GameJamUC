@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3qtp5og4ky8t"]
+[gd_scene load_steps=10 format=3 uid="uid://b3qtp5og4ky8t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_w8ds6"]
-[ext_resource type="Texture2D" uid="uid://0e4upq85hgio" path="res://icon.svg" id="2_br1w5"]
+[ext_resource type="Texture2D" uid="uid://bnh7mb78r8aqo" path="res://icon.svg" id="2_br1w5"]
 [ext_resource type="Script" path="res://scripts/mouse.gd" id="2_c5lt4"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a4aqy"]
@@ -20,10 +20,15 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ulce"]
 size = Vector2(59.75, 63)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xegb7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bhl4n"]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_w8ds6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.825, 0.825)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 script = ExtResource("2_c5lt4")
@@ -35,6 +40,7 @@ occluder = SubResource("OccluderPolygon2D_a4aqy")
 [node name="Light" type="Node2D" parent="Marker2D"]
 
 [node name="TextureLight" type="PointLight2D" parent="Marker2D/Light"]
+visible = false
 position = Vector2(0, 3.33786e-06)
 scale = Vector2(10, 10)
 energy = 0.59
@@ -60,3 +66,31 @@ texture = ExtResource("2_br1w5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7ulce")
+
+[node name="InteractionComponents" type="Node2D" parent="."]
+
+[node name="Player_interaction" type="Area2D" parent="InteractionComponents"]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponents/Player_interaction"]
+z_index = 2
+scale = Vector2(7.895, 7.895)
+shape = SubResource("CircleShape2D_xegb7")
+debug_color = Color(2.31028e-06, 0.649351, 0.1473, 0.42)
+
+[node name="Label" type="Label" parent="InteractionComponents"]
+light_mask = 8
+visibility_layer = 8
+z_index = 1
+offset_left = -20.0
+offset_top = -107.0
+offset_right = 20.0
+offset_bottom = -84.0
+text = "test"
+label_settings = SubResource("LabelSettings_bhl4n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_entered" from="InteractionComponents/Player_interaction" to="." method="_on_player_interaction_area_entered"]
+[connection signal="area_exited" from="InteractionComponents/Player_interaction" to="." method="_on_player_interaction_area_exited"]

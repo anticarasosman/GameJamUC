@@ -2,80 +2,55 @@ extends Node2D
 
 var playerDetected = false
 var doorDetected = false
-var KILL_TIME = 3.0
 var asking = false
 var SPEED = 600
-var direction:int
+var direction: int
 var current_player: Node2D
 
-@onready var label = $Label
-@onready var line_edit = $Label/LineEdit
+var KILL_TIME = 12.0
+@onready var kill_timer: Label = $KillTime
 
 func _ready():
-	label.hide()
-	line_edit.hide()
-
+	#line_edit.connect("text_submitted", Callable(self, "_on_ResponseInput_text_submitted"))
+	pass
+	
 func _process(_delta: float) -> void:
-	if direction == 0:
-		position.y += SPEED * _delta
-	elif direction == 1:
-		position.y -= SPEED * _delta
-	elif direction == 2:
-		position.x -= SPEED * _delta
-	elif direction == 3:
-		position.x += SPEED * _delta
-	if playerDetected && doorDetected:
-		if not asking:
-			label.text = "ME DEJAS ENTRAR?"
-			label.show()
-			line_edit.text = ""
-			line_edit.show()
-			line_edit.grab_focus()
-			asking = true
-	else:
-		game_over()
+	match direction:
+		0: position.y += SPEED * _delta
+		1: position.y -= SPEED * _delta
+		2: position.x -= SPEED * _delta
+		3: position.x += SPEED * _delta
+	
+	kill_timer.text = "%.2f" % KILL_TIME
 
-func _on_area_2d_area_entered(area):
-	print("CHOQUE CON: "+area.name)
-	if area.name == "Player_interaction":
-		playerDetected = true
-		KILL_TIME = 3.0 #Reseteamos el KILL_TIME
-		asking = false
-		current_player = area
-		current_player.get_parent().ATTACKED = true
+	if doorDetected and not asking:
+		KILL_TIME -= _delta
+
+		if KILL_TIME <= 0:
+			kill_player()
+		
+
+func _on_interact_door_area_entered(area: Area2D) -> void:
 	if area.name == "Open_door":
 		SPEED = 0
 		doorDetected = true
 
-func _on_body_exited(body) -> void:
-	if body.name == "Player":
-		playerDetected = false
-		label.hide()
-		line_edit.hide()
+func _on_interact_player_area_entered(area: Area2D) -> void:
+	if area.name == "Player_interaction":
+		playerDetected = true
 		asking = false
-		body.ATTACKED = false
 
-func _on_ResponseInput_text_submitted(new_text: String) -> void:
-	print("Texto ingresado:", new_text)
+func receive_interaction():
+	var player = get_tree().get_current_scene().find_child("Player", true, false)
+	if player:
+		player.show_dialog("ME DEJAS ENTRAR?")
 
-	if new_text.strip_edges().to_upper() == "NO":
-		print("Respuesta correcta detectada")
+func cancel_attack():
+	queue_free()
+	
+func kill_player():
+	var player = get_tree().get_current_scene().find_child("Player", true, false)
+	if player:
+		player.game_over()
 
-		label.text = ""
-		line_edit.hide()
-		playerDetected = false
-		asking = false
-		KILL_TIME = 3.0 #Reseteamos el KILL_TIME
-
-		if current_player:
-			current_player.ATTACKED = false
-
-		# Mueve al vampiro a otro lugar
-		position = Vector2(randf_range(100, 900), randf_range(100, 700))
-	else:
-		label.text = "..."
-		game_over()
-
-func game_over():
-	label.text = "fuiste"
-	line_edit.editable = false
+	queue_free()

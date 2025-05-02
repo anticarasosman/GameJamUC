@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://be02d6ql3ye8s"
-path="res://.godot/imported/Ally-removebg-preview.png-545b6d170c9bde99770e41425a61e344.ctex"
+path="res://.godot/imported/Ally-removebg-preview.png-039abbad7941cf8ae91c3e2e9e3e9532.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ally-removebg-preview.png"
-dest_files=["res://.godot/imported/Ally-removebg-preview.png-545b6d170c9bde99770e41425a61e344.ctex"]
+source_file="res://sprites/Ally-removebg-preview.png"
+dest_files=["res://.godot/imported/Ally-removebg-preview.png-039abbad7941cf8ae91c3e2e9e3e9532.ctex"]
 
 [params]
 

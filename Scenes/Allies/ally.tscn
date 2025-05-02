@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7aqqhj6qnbbu"]
 
 [ext_resource type="Script" path="res://scripts/Ally/ally.gd" id="1_767i0"]
-[ext_resource type="Texture2D" uid="uid://be02d6ql3ye8s" path="res://assets/Sprites/Ally-removebg-preview.png" id="2_isgbx"]
+[ext_resource type="Texture2D" uid="uid://be02d6ql3ye8s" path="res://sprites/Ally-removebg-preview.png" id="2_isgbx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ynlrs"]
 

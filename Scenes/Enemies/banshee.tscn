@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://w8dcr2bvpbh3"]
 
-[ext_resource type="Texture2D" uid="uid://bksibcqd3cyhx" path="res://Sprites/Banshee.png" id="1_yslsw"]
+[ext_resource type="Texture2D" uid="uid://bksibcqd3cyhx" path="res://sprites/Banshee.png" id="1_yslsw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1jt54"]
 

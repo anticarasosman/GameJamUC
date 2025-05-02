@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://i318cngymxmo"]
 
-[ext_resource type="Texture2D" uid="uid://wdjtd4k5ohaf" path="res://assets/Sprites/Ghost.png" id="1_hahbv"]
+[ext_resource type="Texture2D" uid="uid://wdjtd4k5ohaf" path="res://sprites/Ghost.png" id="1_hahbv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ym2q3"]
 
