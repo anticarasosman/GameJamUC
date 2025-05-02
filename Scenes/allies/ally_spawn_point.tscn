@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5kx6w17yi6b6"]
+
+[ext_resource type="Script" path="res://Scripts/Ally/ally_spawn.gd" id="1_djo0b"]
+[ext_resource type="PackedScene" uid="uid://c7aqqhj6qnbbu" path="res://Scenes/allies/ally.tscn" id="2_sej2y"]
+
+[node name="Ally_Spawn_Point" type="Marker2D"]
+script = ExtResource("1_djo0b")
+ally_scene = ExtResource("2_sej2y")

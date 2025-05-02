@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7vq16s0f5ftn"]
+
+[ext_resource type="PackedScene" uid="uid://b3qtp5og4ky8t" path="res://Scenes/player.tscn" id="1_nax2m"]
+[ext_resource type="Texture2D" uid="uid://bnh7mb78r8aqo" path="res://icon.svg" id="2_wgjlw"]
+[ext_resource type="PackedScene" uid="uid://dgvvufqh3438l" path="res://Scenes/shadow_caster.tscn" id="2_y5foy"]
+[ext_resource type="PackedScene" uid="uid://cbwylhr3igog6" path="res://Scenes/window.tscn" id="4_ah80c"]
+[ext_resource type="PackedScene" uid="uid://cnv4k5mi3sn1y" path="res://Scenes/vampire.tscn" id="5_t211g"]
+[ext_resource type="LabelSettings" uid="uid://b46t7wo2p18ko" path="res://assets/vamp.tres" id="6_xo0dw"]
+
+[sub_resource type="Theme" id="Theme_tj7b3"]
+
+[sub_resource type="FontVariation" id="FontVariation_p3e1m"]
+
+[node name="Game" type="Node2D"]
+position = Vector2(0, 184)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(573.75, 133.25)
+scale = Vector2(9.03515, 5.04297)
+texture = ExtResource("2_wgjlw")
+metadata/_edit_lock_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(0, -216)
+color = Color(0.0118855, 0.0154818, 0.0776249, 1)
+metadata/_edit_lock_ = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, -216)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("1_nax2m")]
+position = Vector2(572, 175)
+scale = Vector2(0.6, 0.6)
+metadata/_edit_lock_ = true
+
+[node name="vampire" parent="." instance=ExtResource("5_t211g")]
+position = Vector2(613, -34)
+rotation = 1.5701
+metadata/_edit_lock_ = true
+
+[node name="MAP" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="WALLS" type="Node2D" parent="MAP"]
+position = Vector2(32, -224)
+scale = Vector2(0.992961, 0.992961)
+
+[node name="shadowCaster3" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
+position = Vector2(370.609, 313.758)
+scale = Vector2(0.31518, 1)
+
+[node name="shadowCaster" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
+position = Vector2(514.609, 249.758)
+
+[node name="shadowCaster2" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
+position = Vector2(658.609, 249.758)
+
+[node name="shadowCaster4" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
+position = Vector2(442.609, 249.758)
+
+[node name="shadowCaster5" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
+position = Vector2(370.609, 249.758)
+
+[node name="shadowCaster6" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
+position = Vector2(370.609, 441.758)
+
+[node name="shadowCaster7" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
+position = Vector2(514.609, 505.758)
+
+[node name="shadowCaster8" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
+position = Vector2(370.609, 505.758)
+
+[node name="shadowCaster10" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
+position = Vector2(370.609, 377.758)
+
+[node name="shadowCaster11" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
+position = Vector2(586.609, 505.758)
+
+[node name="shadowCaster12" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
+position = Vector2(658.609, 505.758)
+
+[node name="shadowCaster13" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
+position = Vector2(658.609, 313.758)
+
+[node name="shadowCaster9" parent="MAP/WALLS" instance=ExtResource("2_y5foy")]
+position = Vector2(658.609, 441.758)
+
+[node name="WINDOWS" type="Node2D" parent="MAP"]
+
+[node name="window2" parent="MAP/WINDOWS" instance=ExtResource("4_ah80c")]
+position = Vector2(698, 150)
+rotation = 1.56922
+scale = Vector2(0.278238, 0.255998)
+skew = -0.000884175
+
+[node name="window" parent="MAP/WINDOWS" instance=ExtResource("4_ah80c")]
+position = Vector2(471, 286)
+scale = Vector2(0.32, 0.4)
+
+[node name="VampAttack" type="CanvasLayer" parent="."]
+
+[node name="InviteLabel" type="Label" parent="VampAttack"]
+anchors_preset = -1
+anchor_top = 0.145062
+anchor_right = 0.152778
+anchor_bottom = 0.214506
+offset_left = 483.0
+offset_top = 150.0
+offset_right = 523.0
+offset_bottom = 173.0
+label_settings = ExtResource("6_xo0dw")
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ResponseInput" type="LineEdit" parent="VampAttack"]
+anchors_preset = -1
+anchor_left = 0.09
+anchor_top = 0.20679
+anchor_right = 0.125814
+anchor_bottom = 0.20679
+offset_left = 370.32
+offset_top = 231.584
+offset_right = 541.063
+offset_bottom = 306.0
+theme = SubResource("Theme_tj7b3")
+theme_override_fonts/font = SubResource("FontVariation_p3e1m")
+theme_override_font_sizes/font_size = 32
+expand_to_text_length = true
+metadata/_edit_use_anchors_ = true

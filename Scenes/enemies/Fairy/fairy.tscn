@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b705ygnajy0lf"]
+
+[ext_resource type="Texture2D" uid="uid://43ppq2ic658t" path="res://sprites/Fairy.png" id="1_py808"]
+[ext_resource type="Script" path="res://Scripts/fairy.gd" id="1_yuaeq"]
+[ext_resource type="PackedScene" uid="uid://cmp6adnak8w61" path="res://Scenes/interactables/interact_area.tscn" id="3_mckrr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_itiri"]
+radius = 282.297
+
+[node name="Fairy" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_yuaeq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.109, 0.109)
+texture = ExtResource("1_py808")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.109, 0.109)
+shape = SubResource("CircleShape2D_itiri")
+
+[node name="InteractArea" parent="." instance=ExtResource("3_mckrr")]
+modulate = Color(1, 1, 0.0588235, 1)
+scale = Vector2(0.49, 0.49)
+interact_label = "InteractVampire"
+interact_type = "Fairy"
+interact_value = ""

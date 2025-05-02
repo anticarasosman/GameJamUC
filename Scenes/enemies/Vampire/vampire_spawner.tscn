@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc33icdwy2b4u"]
+
+[ext_resource type="Script" path="res://Scripts/vampire/vampire_spawner.gd" id="1_wogxs"]
+[ext_resource type="PackedScene" uid="uid://cnv4k5mi3sn1y" path="res://Scenes/enemies/Vampire/vampire.tscn" id="2_27u1t"]
+
+[node name="vampire_spawner" type="Marker2D"]
+script = ExtResource("1_wogxs")
+vampire_scene = ExtResource("2_27u1t")

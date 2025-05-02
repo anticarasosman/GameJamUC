@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnv4k5mi3sn1y"]
+
+[ext_resource type="Script" path="res://Scripts/vampire/vampire.gd" id="1_f0ew0"]
+[ext_resource type="PackedScene" uid="uid://cmp6adnak8w61" path="res://Scenes/interactables/interact_area.tscn" id="2_cixqh"]
+
+[sub_resource type="Gradient" id="Gradient_d7nta"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vaj2j"]
+gradient = SubResource("Gradient_d7nta")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bcdak"]
+
+[node name="vampire" type="Node2D"]
+script = ExtResource("1_f0ew0")
+
+[node name="InteractPlayer" parent="." instance=ExtResource("2_cixqh")]
+scale = Vector2(3.505, 3.505)
+monitoring = true
+interact_label = "InteractPlayer"
+interact_type = "VampAttack"
+interact_value = "\"E\" to Interact"
+
+[node name="InteractDoor" parent="." instance=ExtResource("2_cixqh")]
+modulate = Color(0.813637, 0.168906, 0.338595, 1)
+self_modulate = Color(0.59028, 0.0703276, 0.239411, 1)
+position = Vector2(-1, 0)
+collision_layer = 35
+collision_mask = 35
+monitoring = true
+interact_label = "InteractDoor"
+interact_type = "Door"
+
+[node name="VampireSprite" type="Sprite2D" parent="InteractDoor"]
+position = Vector2(1, 0)
+texture = SubResource("GradientTexture2D_vaj2j")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractDoor"]
+position = Vector2(1, 0)
+scale = Vector2(4.705, 4.705)
+shape = SubResource("CircleShape2D_bcdak")
+debug_color = Color(0.854902, 0.0784314, 0.0352941, 0.419608)
+metadata/_edit_lock_ = true
+
+[node name="KillTime" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -116.0
+offset_right = 19.0
+offset_bottom = -93.0
+
+[connection signal="area_entered" from="InteractPlayer" to="." method="_on_interact_player_area_entered"]
+[connection signal="area_entered" from="InteractDoor" to="." method="_on_interact_door_area_entered"]

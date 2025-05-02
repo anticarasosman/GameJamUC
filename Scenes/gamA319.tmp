@@ -1,0 +1,131 @@
+[gd_scene load_steps=16 format=3 uid="uid://bqnmbp5741x0q"]
+
+[ext_resource type="PackedScene" uid="uid://ylbtwpucf5mg" path="res://scenes/house.tscn" id="1_a4uf4"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_tkxn7"]
+[ext_resource type="PackedScene" uid="uid://c5kx6w17yi6b6" path="res://scenes/allies/ally_spawn_point.tscn" id="3_a64an"]
+[ext_resource type="PackedScene" uid="uid://c7aqqhj6qnbbu" path="res://scenes/allies/ally.tscn" id="3_dunpe"]
+[ext_resource type="PackedScene" uid="uid://w8dcr2bvpbh3" path="res://scenes/enemies/banshee.tscn" id="3_gidkh"]
+[ext_resource type="PackedScene" uid="uid://i318cngymxmo" path="res://scenes/enemies/ghost.tscn" id="4_vrajn"]
+[ext_resource type="PackedScene" uid="uid://l2qmj8realvi" path="res://scenes/scene_transition_animation.tscn" id="7_gtth6"]
+[ext_resource type="PackedScene" uid="uid://cc33icdwy2b4u" path="res://scenes/enemies/vampire_spawnerOLD.tscn" id="8_d4chx"]
+[ext_resource type="Script" path="res://scripts/Ally/ally_spawn_parameters.gd" id="8_tarxs"]
+[ext_resource type="PackedScene" uid="uid://bnwjs1aoi15q0" path="res://scenes/environment/door.tscn" id="10_fdr55"]
+[ext_resource type="Script" path="res://scripts/vampire/vampire_spawn_parameters.gd" id="11_y1gko"]
+[ext_resource type="PackedScene" uid="uid://cnv4k5mi3sn1y" path="res://scenes/vampire.tscn" id="13_giupi"]
+[ext_resource type="PackedScene" uid="uid://brpusp0k6dy2m" path="res://scenes/items/item.tscn" id="14_rppw6"]
+[ext_resource type="PackedScene" uid="uid://b3qtp5og4ky8t" path="res://scenes/player.tscn" id="15_shpjv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fy5yn"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_tkxn7")
+ally_scene = ExtResource("3_dunpe")
+vampire_scene = ExtResource("3_dunpe")
+banshee_scene = ExtResource("3_gidkh")
+ghost_scene = ExtResource("4_vrajn")
+
+[node name="Ally_spawners" type="Node" parent="."]
+script = ExtResource("8_tarxs")
+
+[node name="Ally_spawn_point" parent="Ally_spawners" instance=ExtResource("3_a64an")]
+position = Vector2(2, -883)
+
+[node name="Ally_spawn_point2" parent="Ally_spawners" instance=ExtResource("3_a64an")]
+position = Vector2(67, 796)
+spawn_direction = 1
+
+[node name="Ally_spawn_point3" parent="Ally_spawners" instance=ExtResource("3_a64an")]
+position = Vector2(939, -53)
+spawn_direction = 2
+
+[node name="Ally_spawn_point4" parent="Ally_spawners" instance=ExtResource("3_a64an")]
+position = Vector2(-929, -8)
+spawn_direction = 3
+
+[node name="House" parent="." instance=ExtResource("1_a4uf4")]
+position = Vector2(-525, -356)
+metadata/_edit_lock_ = true
+
+[node name="scene_transition_animation" parent="." instance=ExtResource("7_gtth6")]
+visible = false
+position = Vector2(-1927, -1198)
+metadata/_edit_lock_ = true
+
+[node name="Doors" type="Node" parent="."]
+
+[node name="door" parent="Doors" instance=ExtResource("10_fdr55")]
+position = Vector2(-438, 73)
+rotation = 1.57169
+scale = Vector2(0.090322, 0.17811)
+metadata/_edit_lock_ = true
+
+[node name="door2" parent="Doors" instance=ExtResource("10_fdr55")]
+position = Vector2(432, -137)
+rotation = 1.57169
+scale = Vector2(0.107192, -0.168292)
+metadata/_edit_lock_ = true
+
+[node name="door3" parent="Doors" instance=ExtResource("10_fdr55")]
+position = Vector2(104, 262)
+rotation = -0.0163252
+scale = Vector2(0.123747, -0.17236)
+metadata/_edit_lock_ = true
+
+[node name="door4" parent="Doors" instance=ExtResource("10_fdr55")]
+position = Vector2(-67, -319)
+rotation = -0.0163252
+scale = Vector2(0.136831, 0.187057)
+metadata/_edit_lock_ = true
+
+[node name="VampAttack" type="CanvasLayer" parent="."]
+
+[node name="AnswerField" type="LineEdit" parent="VampAttack"]
+visible = false
+offset_left = 477.0
+offset_top = 435.0
+offset_right = 782.0
+offset_bottom = 502.0
+alignment = 1
+
+[node name="QuestionField" type="Label" parent="VampAttack"]
+visible = false
+offset_left = 508.0
+offset_top = 277.0
+offset_right = 749.0
+offset_bottom = 403.0
+label_settings = SubResource("LabelSettings_fy5yn")
+
+[node name="Player" parent="." node_paths=PackedStringArray("answer_field", "question_field") instance=ExtResource("15_shpjv")]
+position = Vector2(-249, -142)
+answer_field = NodePath("../VampAttack/AnswerField")
+question_field = NodePath("../VampAttack/QuestionField")
+
+[node name="Vampire_spawners" type="Node" parent="."]
+script = ExtResource("11_y1gko")
+
+[node name="vampire_spawner" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
+position = Vector2(2, -883)
+vampire_scene = ExtResource("13_giupi")
+
+[node name="vampire_spawner2" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
+position = Vector2(67, 796)
+spawn_direction = 1
+vampire_scene = ExtResource("13_giupi")
+
+[node name="vampire_spawner3" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
+position = Vector2(939, -53)
+spawn_direction = 2
+vampire_scene = ExtResource("13_giupi")
+
+[node name="vampire_spawner4" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
+position = Vector2(-929, -8)
+spawn_direction = 3
+vampire_scene = ExtResource("13_giupi")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.172833, 0.172833, 0.172833, 1)
+
+[node name="Item" parent="." instance=ExtResource("14_rppw6")]
+position = Vector2(-272, 87)
+scale = Vector2(2.12, 2.12)
+interact_value = "item"

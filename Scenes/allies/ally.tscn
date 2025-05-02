@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7aqqhj6qnbbu"]
+
+[ext_resource type="Script" path="res://Scripts/Ally/ally.gd" id="1_767i0"]
+[ext_resource type="PackedScene" uid="uid://cmp6adnak8w61" path="res://Scenes/interactables/interact_area.tscn" id="2_2jvay"]
+[ext_resource type="PackedScene" uid="uid://b705ygnajy0lf" path="res://Scenes/enemies/Fairy/fairy.tscn" id="2_3v83b"]
+[ext_resource type="Texture2D" uid="uid://be02d6ql3ye8s" path="res://sprites/Ally-removebg-preview.png" id="2_isgbx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a0ypy"]
+
+[node name="Ally" type="Node2D"]
+scale = Vector2(5.42772, 4.89986)
+script = ExtResource("1_767i0")
+fairy_scene = ExtResource("2_3v83b")
+
+[node name="Ally Sprite" type="Sprite2D" parent="."]
+position = Vector2(1.75704e-07, 0)
+scale = Vector2(0.0426439, 0.0413534)
+texture = ExtResource("2_isgbx")
+
+[node name="InteractPlayer" parent="." instance=ExtResource("2_2jvay")]
+position = Vector2(-0.055, 0)
+scale = Vector2(0.75, 0.75)
+monitoring = true
+interact_label = "InteractPlayer"
+interact_type = "AllyHelp"
+interact_value = "\"E\" to Interact"
+
+[node name="InteractDoor" parent="." instance=ExtResource("2_2jvay")]
+modulate = Color(0.813637, 0.168906, 0.338595, 1)
+self_modulate = Color(0.59028, 0.0703276, 0.239411, 1)
+scale = Vector2(0.3, 0.3)
+collision_layer = 35
+collision_mask = 35
+monitoring = true
+interact_label = "InteractDoor"
+interact_type = "Door"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractDoor"]
+position = Vector2(0.633334, 0)
+scale = Vector2(1.0115, 1.0115)
+shape = SubResource("CircleShape2D_a0ypy")
+debug_color = Color(0.854902, 0.0784314, 0.0352941, 0.419608)
+metadata/_edit_lock_ = true
+
+[connection signal="area_entered" from="InteractPlayer" to="." method="_on_interact_player_area_entered"]
+[connection signal="area_entered" from="InteractDoor" to="." method="_on_interact_door_area_entered"]
