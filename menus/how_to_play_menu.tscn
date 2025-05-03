@@ -1,0 +1,314 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3rjfyo5767ma"]
+
+[ext_resource type="Script" path="res://menus/how_to_play_menu.gd" id="1_5e8gk"]
+[ext_resource type="Texture2D" uid="uid://0t52sxtlr7q5" path="res://menus/3rqer.png" id="2_01lsy"]
+[ext_resource type="FontFile" uid="uid://dr5oka25mly1t" path="res://menus/vhs-gothic.ttf" id="3_3pm15"]
+
+[sub_resource type="Gradient" id="Gradient_akb4d"]
+offsets = PackedFloat32Array(0, 0.63)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4ucwv"]
+gradient = SubResource("Gradient_akb4d")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="HowToPlayMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5e8gk")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 736.0
+texture = ExtResource("2_01lsy")
+expand_mode = 1
+
+[node name="VolverButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 576.0
+offset_right = 657.0
+offset_bottom = 639.0
+theme_override_fonts/font = ExtResource("3_3pm15")
+text = "Volver"
+
+[node name="HadasTitle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 842.0
+offset_top = 56.0
+offset_right = 1105.0
+offset_bottom = 168.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3pm15")
+theme_override_font_sizes/font_size = 40
+text = "¡Hadas!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HadasText" type="Label" parent="HadasTitle"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 64.0
+offset_right = 280.0
+offset_bottom = 272.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3pm15")
+theme_override_font_sizes/font_size = 12
+text = "Las hadas pueden parecer seres inocentes, pero en el fondo son seres de oscuro corazón motivados por su naturaleza curiosa y molesta. NO dejes que lleguen a las puertas. Por alguna razón los aplausos al estar cerca de ellas las asusta. "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AliadosTitle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 816.0
+offset_top = 416.0
+offset_right = 1127.0
+offset_bottom = 504.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3pm15")
+theme_override_font_sizes/font_size = 40
+text = "¿Aliados?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AliadosText" type="Label" parent="AliadosTitle"]
+layout_mode = 0
+offset_top = 72.0
+offset_right = 305.0
+offset_bottom = 224.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3pm15")
+theme_override_font_sizes/font_size = 12
+text = "Son seres muy extraños que buscan refugio desesperadamente. Puedes ayudarlos dejándolos pasar, pero sé rápido! Ninguno de los otros seres lo desean y no dudarán en exterminarlos si los ven!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="VampirosTitle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 391.0
+offset_bottom = 168.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3pm15")
+theme_override_font_sizes/font_size = 40
+text = "¡Vampiros!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VampirosText" type="Label" parent="VampirosTitle"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 88.0
+offset_right = 328.0
+offset_bottom = 256.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3pm15")
+theme_override_font_sizes/font_size = 12
+text = "Los vampiros son gente noble y educada. Tocarán tu puerta y te preguntarán si pueden entrar. Responde NO para no dejarlos entrar. Pero no los dejes esperando demasiado tiempo, pues es una falta de respeto en el mundo vampirezco."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="FantasmasTitle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 400.0
+offset_right = 383.0
+offset_bottom = 512.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3pm15")
+theme_override_font_sizes/font_size = 40
+text = "¡Fantasmas!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FantasmasText" type="Label" parent="FantasmasTitle"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 70.0
+offset_right = 339.0
+offset_bottom = 238.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3pm15")
+theme_override_font_sizes/font_size = 12
+text = "Condenados eternamente a vagar por el mundo en su soledad y tristeza. Los fantasmas son atraídos por los seres vivos (tú), pero entran en pánico cuando los apuntas con tu linterna."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="GameTitle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 88.0
+offset_right = 783.0
+offset_bottom = 152.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3pm15")
+theme_override_font_sizes/font_size = 50
+text = "Cómo jugar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TEXTO" type="Label" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 264.0
+offset_right = 744.0
+offset_bottom = 512.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3pm15")
+theme_override_font_sizes/font_size = 15
+text = "1. WASD o flechas para moverse
+2. Linterna recargable! Usar con \"F\". OJO, que su batería se acaba y se regenera con el tiempo.
+3. \"E\" para interactuar con quien esté en la puerta.
+4. Click izquierdo para aplaudir.
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.314316, 0.314316, 0.314316, 1)
+
+[node name="Shadow2" type="PointLight2D" parent="."]
+position = Vector2(184, 520)
+scale = Vector2(6.38648, 5.79496)
+color = Color(0.999761, 0.868129, 0.864053, 1)
+energy = 0.7
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_4ucwv")
+
+[node name="Shadow" type="PointLight2D" parent="."]
+position = Vector2(392, 368)
+scale = Vector2(1.87695, 1.75781)
+color = Color(0.972549, 0.0431373, 0.262745, 1)
+energy = 0.8
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_4ucwv")
+
+[node name="Shadow3" type="PointLight2D" parent="."]
+position = Vector2(176, 200)
+scale = Vector2(6.38648, 5.79496)
+color = Color(0.999523, 0.690157, 0.686597, 1)
+energy = 0.7
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_4ucwv")
+
+[node name="Shadow4" type="PointLight2D" parent="."]
+position = Vector2(584, 368)
+scale = Vector2(6.38648, 5.79496)
+color = Color(0.999761, 0.868129, 0.864053, 1)
+energy = 0.7
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_4ucwv")
+
+[node name="Shadow5" type="PointLight2D" parent="."]
+position = Vector2(960, 200)
+scale = Vector2(6.38648, 5.79496)
+color = Color(0.999761, 0.868129, 0.864053, 1)
+energy = 0.7
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_4ucwv")
+
+[node name="Shadow6" type="PointLight2D" parent="."]
+position = Vector2(960, 528)
+scale = Vector2(6.38648, 5.79496)
+color = Color(0.999761, 0.868129, 0.864053, 1)
+energy = 0.7
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_4ucwv")
+
+[node name="Shadow7" type="PointLight2D" parent="."]
+position = Vector2(880, 104)
+scale = Vector2(2.94324, 2.44435)
+color = Color(0.282353, 0.866667, 0.862745, 1)
+energy = 0.7
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_4ucwv")
+
+[node name="Shadow8" type="PointLight2D" parent="."]
+position = Vector2(304, 96)
+scale = Vector2(2.69324, 2.39748)
+color = Color(0.770886, 0.0147009, 0.198553, 1)
+energy = 0.7
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_4ucwv")
+
+[node name="Shadow8" type="PointLight2D" parent="Shadow8"]
+position = Vector2(213.869, 143.484)
+scale = Vector2(1.76433, 1.51157)
+color = Color(0.235654, 0.69702, 0.102232, 1)
+energy = 0.7
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_4ucwv")
+
+[node name="Shadow8" type="PointLight2D" parent="Shadow8/Shadow8"]
+position = Vector2(-121.218, 6.6226)
+scale = Vector2(1.76433, 1.51157)
+color = Color(0.756312, 0.0952261, 0.425977, 1)
+energy = 0.7
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_4ucwv")
+
+[node name="Shadow9" type="PointLight2D" parent="."]
+position = Vector2(184, 520)
+scale = Vector2(6.38648, 5.79496)
+color = Color(0.999761, 0.868129, 0.864053, 1)
+energy = 0.7
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_4ucwv")
+
+[node name="Shadow10" type="PointLight2D" parent="."]
+position = Vector2(592, 608)
+scale = Vector2(3.06824, 1.77248)
+color = Color(0.999761, 0.868129, 0.864053, 1)
+energy = 0.7
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_4ucwv")
+
+[connection signal="pressed" from="VolverButton" to="." method="_on_volver_button_pressed"]

@@ -1,22 +1,65 @@
-[gd_scene load_steps=5 format=3 uid="uid://i318cngymxmo"]
+[gd_scene load_steps=8 format=3 uid="uid://i318cngymxmo"]
 
 [ext_resource type="Script" path="res://Scripts/ghost/ghost.gd" id="1_e06ip"]
-[ext_resource type="Texture2D" uid="uid://bksibcqd3cyhx" path="res://sprites/Banshee.png" id="2_h11xp"]
+[ext_resource type="Texture2D" uid="uid://b8hjh5vbirxmi" path="res://assets/Sprites/Sprite_sheets/gost.png" id="2_ah2ae"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_imk8g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3kgvn"]
 radius = 8.0
 
+[sub_resource type="Animation" id="Animation_rtwfk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_cdgow"]
+resource_name = "floating"
+length = 0.44
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tanhi"]
+_data = {
+"RESET": SubResource("Animation_rtwfk"),
+"floating": SubResource("Animation_cdgow")
+}
+
 [node name="ghost" type="CharacterBody2D"]
 scale = Vector2(5.81804, 5.85395)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_e06ip")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0404336, 0.038135)
-texture = ExtResource("2_h11xp")
+texture_filter = 1
+position = Vector2(-0.859402, -0.6833)
+scale = Vector2(2.6473, 2.46916)
+texture = ExtResource("2_ah2ae")
+offset = Vector2(36.0121, 10.2589)
+hframes = 7
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_imk8g")
@@ -29,5 +72,10 @@ collision_mask = 8
 [node name="Player_detection" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_3kgvn")
 debug_color = Color(0.189801, 0.642039, 0, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tanhi")
+}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bnh7mb78r8aqo" path="res://icon.svg" id="2_wgjlw"]
 [ext_resource type="PackedScene" uid="uid://dgvvufqh3438l" path="res://Scenes/shadow_caster.tscn" id="2_y5foy"]
 [ext_resource type="PackedScene" uid="uid://cbwylhr3igog6" path="res://Scenes/window.tscn" id="4_ah80c"]
-[ext_resource type="PackedScene" uid="uid://cnv4k5mi3sn1y" path="res://Scenes/vampire.tscn" id="5_t211g"]
+[ext_resource type="PackedScene" uid="uid://cnv4k5mi3sn1y" path="res://Scenes/enemies/Vampire/vampire.tscn" id="5_t211g"]
 [ext_resource type="LabelSettings" uid="uid://b46t7wo2p18ko" path="res://assets/vamp.tres" id="6_xo0dw"]
 
 [sub_resource type="Theme" id="Theme_tj7b3"]

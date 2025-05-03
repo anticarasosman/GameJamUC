@@ -3,6 +3,10 @@ extends CharacterBody2D
 const SPEED = 360.0
 const ACCEL = 8.0
 
+#Animation
+@onready var animation_player = $Sprite2D/AnimationPlayer
+@onready var aplauso = $aplauso
+
 #Inventory
 var INVENTORY = []
 const INVENTORY_SPACE = 3
@@ -29,7 +33,6 @@ var lightIsOn = false
 var current_vampire: Node = null
 var current_ally: Node = null
 
-
 var PRIORITY = {
 	"VampAttack": 3,
 	"Door": 2,
@@ -52,6 +55,10 @@ func get_input():
 func _process(delta):
 	var playerInput = get_input()
 	velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
+	if playerInput:
+		animation_player.play("walking")
+	else:
+		animation_player.play("idle")
 	move_and_slide()
 
 	# Ver interacciones
@@ -62,7 +69,10 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("FlashLight"):
 		lightIsOn = !lightIsOn
-		
+	
+	if Input.is_action_just_pressed("Clap"):
+		aplauso.animation_player.play("clap")
+	
 	if all_interactions and Input.is_action_just_pressed("Interact"):
 		handle_interaction(all_interactions[0])
 
@@ -87,6 +97,7 @@ var needs_sort = false
 
 func _on_player_interaction_area_entered(area: Area2D) -> void:
 	if area is InteractArea and not all_interactions.has(area):
+		ATTACKED = true
 		all_interactions.append(area)
 		needs_sort = true
 
@@ -104,10 +115,12 @@ func update_interactions() -> void:
 		var ia = all_interactions[0] as InteractArea
 		interaction_label.text = ia.interact_value
 	else:
-		interaction_label.text = "Nothing"
+		interaction_label.text = ""
 
 
 func handle_interaction(area: Area2D) -> void:
+	if area.name == "Open_door":
+		area.get_parent().animation_player.play("open_door")
 	match area.interact_type:
 		"VampAttack":
 			var vamp = area.get_parent()
@@ -125,15 +138,18 @@ func _compare_interactions(a, b):
 			
 func _on_ResponseInput_text_submitted(text: String) -> void:
 	if text.strip_edges().to_upper() == "NO" and current_vampire:
+		ATTACKED = false
 		current_vampire.cancel_attack()
 		current_vampire = null  # ya no estás interactuando con ninguno
 		hide_dialogue()
 	elif current_ally:
 		if text.strip_edges().to_upper() == "NO":
+			ATTACKED = false
 			current_ally.cancel_attack()
 			current_ally = null
 			hide_dialogue()
 		elif text.strip_edges().to_upper() == "SI":
+			ATTACKED = false
 			Global.saved_allies += 1
 			current_ally.asked = true
 			current_ally.SPEED = 600.0

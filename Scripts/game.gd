@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var scene_transition_animation = $scene_transition_animation/AnimationPlayer
+@onready var animation_player = $AnimationPlayer
 
 var current_wave: int = 0
 @export var ally_scene: PackedScene

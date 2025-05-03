@@ -1,4 +1,6 @@
 extends CharacterBody2D
+
+@onready var animation_player = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @export var min_distance: float = 50.0
 var player: NodePath
@@ -14,6 +16,7 @@ var regeneration_amount = 20
 var regeneration_interval: float = 1
 
 func _ready():
+	animation_player.play("floating")
 	var regeneration_timer = Timer.new()
 	add_child(regeneration_timer)
 	regeneration_timer.wait_time = regeneration_interval
@@ -44,5 +47,5 @@ func _on_area_2d_body_entered(body):
 		print("TOQUE AL JUGADOR")
 
 func die():
-	print("ME MATARON!")
+	Global.enemy_budget -= 3
 	queue_free()

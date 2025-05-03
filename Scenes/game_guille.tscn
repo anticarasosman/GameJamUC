@@ -1,53 +1,52 @@
-[gd_scene load_steps=19 format=3 uid="uid://bqnmbp5741x0q"]
+[gd_scene load_steps=17 format=3 uid="uid://bqnmbp5741x0q"]
 
 [ext_resource type="PackedScene" uid="uid://ylbtwpucf5mg" path="res://Scenes/house.tscn" id="1_a4uf4"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_tkxn7"]
 [ext_resource type="PackedScene" uid="uid://c5kx6w17yi6b6" path="res://Scenes/allies/ally_spawn_point.tscn" id="3_a64an"]
 [ext_resource type="PackedScene" uid="uid://c7aqqhj6qnbbu" path="res://Scenes/allies/ally.tscn" id="3_dunpe"]
 [ext_resource type="PackedScene" uid="uid://w8dcr2bvpbh3" path="res://Scenes/enemies/banshee.tscn" id="3_gidkh"]
-[ext_resource type="PackedScene" uid="uid://i318cngymxmo" path="res://Scenes/enemies/ghost.tscn" id="4_vrajn"]
 [ext_resource type="PackedScene" uid="uid://l2qmj8realvi" path="res://Scenes/scene_transition_animation.tscn" id="7_gtth6"]
 [ext_resource type="PackedScene" uid="uid://cc33icdwy2b4u" path="res://Scenes/enemies/vampire_spawnerOLD.tscn" id="8_d4chx"]
 [ext_resource type="Script" path="res://Scripts/Ally/ally_spawn_parameters.gd" id="8_tarxs"]
 [ext_resource type="PackedScene" uid="uid://bnwjs1aoi15q0" path="res://Scenes/environment/door.tscn" id="10_fdr55"]
 [ext_resource type="Script" path="res://Scripts/vampire/vampire_spawn_parameters.gd" id="11_y1gko"]
-[ext_resource type="PackedScene" uid="uid://cnv4k5mi3sn1y" path="res://Scenes/enemies/Vampire/vampire.tscn" id="13_es57s"]
-[ext_resource type="PackedScene" uid="uid://brpusp0k6dy2m" path="res://Scenes/items/item.tscn" id="14_rppw6"]
+[ext_resource type="PackedScene" uid="uid://dgvvufqh3438l" path="res://Scenes/shadow_caster.tscn" id="14_a6e67"]
 [ext_resource type="PackedScene" uid="uid://b3qtp5og4ky8t" path="res://Scenes/player.tscn" id="15_shpjv"]
 [ext_resource type="PackedScene" uid="uid://j1clsuiu7ohs" path="res://Scenes/enemies/Ghost/ghost_spawner.tscn" id="15_xk6xa"]
-[ext_resource type="PackedScene" uid="uid://i318cngymxmo" path="res://Scenes/enemies/Ghost/ghost.tscn" id="16_ws65o"]
-[ext_resource type="PackedScene" uid="uid://bfpfp1ab3arpn" path="res://Scenes/environment/wall.tscn" id="17_6mrqo"]
+[ext_resource type="PackedScene" uid="uid://i318cngymxmo" path="res://Scenes/enemies/ghost.tscn" id="16_ws65o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fy5yn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nu40v"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_tkxn7")
 ally_scene = ExtResource("3_dunpe")
 vampire_scene = ExtResource("3_dunpe")
 banshee_scene = ExtResource("3_gidkh")
-ghost_scene = ExtResource("4_vrajn")
+ghost_scene = ExtResource("16_ws65o")
 
 [node name="Ally_spawners" type="Node" parent="."]
 script = ExtResource("8_tarxs")
 
 [node name="Ally_spawn_point" parent="Ally_spawners" instance=ExtResource("3_a64an")]
-position = Vector2(2, -883)
+position = Vector2(-49, -806)
 
 [node name="Ally_spawn_point2" parent="Ally_spawners" instance=ExtResource("3_a64an")]
-position = Vector2(67, 796)
+position = Vector2(40, 788)
 spawn_direction = 1
 
 [node name="Ally_spawn_point3" parent="Ally_spawners" instance=ExtResource("3_a64an")]
-position = Vector2(939, -53)
+position = Vector2(922, -50)
 spawn_direction = 2
 
 [node name="Ally_spawn_point4" parent="Ally_spawners" instance=ExtResource("3_a64an")]
-position = Vector2(-929, -8)
+position = Vector2(-928, 27)
 spawn_direction = 3
 
 [node name="House" parent="." instance=ExtResource("1_a4uf4")]
-position = Vector2(-525, -356)
-metadata/_edit_lock_ = true
+position = Vector2(-2, -4)
+scale = Vector2(1.14167, 0.984259)
 
 [node name="scene_transition_animation" parent="." instance=ExtResource("7_gtth6")]
 visible = false
@@ -57,28 +56,24 @@ metadata/_edit_lock_ = true
 [node name="Doors" type="Node" parent="."]
 
 [node name="door" parent="Doors" instance=ExtResource("10_fdr55")]
-position = Vector2(-438, 73)
-rotation = 1.57169
-scale = Vector2(0.090322, 0.17811)
-metadata/_edit_lock_ = true
+position = Vector2(-239, 75)
+rotation = 0.00326819
+scale = Vector2(0.0636791, 0.0812117)
 
 [node name="door2" parent="Doors" instance=ExtResource("10_fdr55")]
-position = Vector2(432, -137)
-rotation = 1.57169
-scale = Vector2(0.107192, -0.168292)
-metadata/_edit_lock_ = true
+position = Vector2(239, -88)
+rotation = 3.13095
+scale = Vector2(0.053425, 0.0695139)
 
 [node name="door3" parent="Doors" instance=ExtResource("10_fdr55")]
-position = Vector2(104, 262)
-rotation = -0.0163252
-scale = Vector2(0.123747, -0.17236)
-metadata/_edit_lock_ = true
+position = Vector2(67, 202)
+rotation = 1.56855
+scale = Vector2(-0.0496863, -0.0930122)
 
 [node name="door4" parent="Doors" instance=ExtResource("10_fdr55")]
-position = Vector2(-67, -319)
-rotation = -0.0163252
-scale = Vector2(0.136831, 0.187057)
-metadata/_edit_lock_ = true
+position = Vector2(-117, -210)
+rotation = 1.55823
+scale = Vector2(0.0503035, 0.0930357)
 
 [node name="VampAttack" type="CanvasLayer" parent="."]
 
@@ -99,7 +94,8 @@ offset_bottom = 403.0
 label_settings = SubResource("LabelSettings_fy5yn")
 
 [node name="Player" parent="." node_paths=PackedStringArray("answer_field", "question_field") instance=ExtResource("15_shpjv")]
-position = Vector2(-249, -142)
+position = Vector2(-107, -54)
+scale = Vector2(0.594113, 0.627569)
 answer_field = NodePath("../VampAttack/AnswerField")
 question_field = NodePath("../VampAttack/QuestionField")
 
@@ -107,146 +103,123 @@ question_field = NodePath("../VampAttack/QuestionField")
 script = ExtResource("11_y1gko")
 
 [node name="vampire_spawner" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
-position = Vector2(2, -883)
-vampire_scene = ExtResource("13_es57s")
+position = Vector2(-47, -798)
 
 [node name="vampire_spawner2" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
-position = Vector2(67, 796)
+position = Vector2(41, 793)
 spawn_direction = 1
-vampire_scene = ExtResource("13_es57s")
 
 [node name="vampire_spawner3" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
-position = Vector2(939, -53)
+position = Vector2(928, -56)
 spawn_direction = 2
-vampire_scene = ExtResource("13_es57s")
 
 [node name="vampire_spawner4" parent="Vampire_spawners" instance=ExtResource("8_d4chx")]
-position = Vector2(-929, -8)
+position = Vector2(-912, 31)
 spawn_direction = 3
-vampire_scene = ExtResource("13_es57s")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0.172833, 0.172833, 0.172833, 1)
-
-[node name="Item" parent="." instance=ExtResource("14_rppw6")]
-position = Vector2(-272, 87)
-scale = Vector2(2.12, 2.12)
-interact_value = "item"
+color = Color(0.169245, 0.169246, 0.169244, 1)
 
 [node name="Ghost_spawner" parent="." instance=ExtResource("15_xk6xa")]
+light_mask = 512
+visibility_layer = 512
 player = NodePath("../Player")
 ghost_scene = ExtResource("16_ws65o")
-horizontal_range = 800
-vertical_range = 800
+horizontal_range = 1130
+vertical_range = 1125
 
-[node name="shadowCaster" parent="." instance=ExtResource("17_6mrqo")]
-position = Vector2(-436, -30)
+[node name="Window" type="Node" parent="."]
 
-[node name="shadowCaster2" parent="." instance=ExtResource("17_6mrqo")]
-position = Vector2(-436, -93)
+[node name="window" type="StaticBody2D" parent="Window"]
+position = Vector2(588, 161)
 
-[node name="shadowCaster3" parent="." instance=ExtResource("17_6mrqo")]
-position = Vector2(-436, -151)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Window/window"]
+position = Vector2(-295, -87)
+scale = Vector2(1.35077, 4.31401)
+shape = SubResource("RectangleShape2D_nu40v")
 
-[node name="shadowCaster4" parent="." instance=ExtResource("17_6mrqo")]
-position = Vector2(-436, -216)
+[node name="window2" type="StaticBody2D" parent="Window"]
+position = Vector2(-24, -53)
+rotation = -1.57065
 
-[node name="shadowCaster" parent="shadowCaster4" instance=ExtResource("17_6mrqo")]
-position = Vector2(874, 446)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Window/window2"]
+position = Vector2(-295, -87)
+scale = Vector2(1.35077, 4.31401)
+shape = SubResource("RectangleShape2D_nu40v")
 
-[node name="shadowCaster2" parent="shadowCaster4" instance=ExtResource("17_6mrqo")]
-position = Vector2(874, 383)
+[node name="window3" type="StaticBody2D" parent="Window"]
+position = Vector2(-43, 32)
+rotation = 1.56662
 
-[node name="shadowCaster3" parent="shadowCaster4" instance=ExtResource("17_6mrqo")]
-position = Vector2(874, 325)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Window/window3"]
+position = Vector2(-295, -87)
+scale = Vector2(1.35077, 4.31401)
+shape = SubResource("RectangleShape2D_nu40v")
 
-[node name="shadowCaster4" parent="shadowCaster4" instance=ExtResource("17_6mrqo")]
-position = Vector2(874, 260)
+[node name="window4" type="StaticBody2D" parent="Window"]
 
-[node name="shadowCaster5" parent="shadowCaster4" instance=ExtResource("17_6mrqo")]
-position = Vector2(874, 197)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Window/window4"]
+position = Vector2(-295, -87)
+scale = Vector2(1.35077, 4.31401)
+shape = SubResource("RectangleShape2D_nu40v")
 
-[node name="shadowCaster5" parent="." instance=ExtResource("17_6mrqo")]
-position = Vector2(-436, -279)
+[node name="shadowCasters" type="Node" parent="."]
 
-[node name="shadowCaster6" parent="." instance=ExtResource("17_6mrqo")]
-position = Vector2(338, -325)
+[node name="shadowCaster5" parent="shadowCasters" instance=ExtResource("14_a6e67")]
+position = Vector2(-214, 193)
+scale = Vector2(2.07692, 0.322581)
 
-[node name="shadowCaster6" parent="shadowCaster6" instance=ExtResource("17_6mrqo")]
-position = Vector2(-546, 5)
+[node name="shadowCaster4" parent="shadowCasters" instance=ExtResource("14_a6e67")]
+position = Vector2(-249, 183)
+scale = Vector2(0.421875, 1.5641)
 
-[node name="shadowCaster7" parent="shadowCaster6" instance=ExtResource("17_6mrqo")]
-position = Vector2(-610, 3)
+[node name="shadowCaster" parent="shadowCasters" instance=ExtResource("14_a6e67")]
+position = Vector2(-245, 1)
+scale = Vector2(0.379518, 1.09259)
 
-[node name="shadowCaster8" parent="shadowCaster6" instance=ExtResource("17_6mrqo")]
-position = Vector2(-676, 6)
+[node name="shadowCaster2" parent="shadowCasters" instance=ExtResource("14_a6e67")]
+position = Vector2(-244, -170)
+scale = Vector2(0.3283, 1.39888)
 
-[node name="shadowCaster9" parent="shadowCaster6" instance=ExtResource("17_6mrqo")]
-position = Vector2(-742, 3)
+[node name="shadowCaster3" parent="shadowCasters" instance=ExtResource("14_a6e67")]
+position = Vector2(-244, -206)
+scale = Vector2(1.46078, 0.427807)
 
-[node name="shadowCaster10" parent="shadowCaster6" instance=ExtResource("17_6mrqo")]
-position = Vector2(-804, 4)
+[node name="shadowCaster6" parent="shadowCasters" instance=ExtResource("14_a6e67")]
+position = Vector2(-21, 203)
+scale = Vector2(1.09524, 0.301471)
 
-[node name="shadowCaster6" parent="shadowCaster6/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(431, 591)
+[node name="shadowCaster9" parent="shadowCasters" instance=ExtResource("14_a6e67")]
+position = Vector2(249, -217)
 
-[node name="shadowCaster7" parent="shadowCaster6/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(367, 589)
+[node name="shadowCaster8" parent="shadowCasters" instance=ExtResource("14_a6e67")]
+position = Vector2(180, -205)
+scale = Vector2(1.28136, 0.358621)
 
-[node name="shadowCaster8" parent="shadowCaster6/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(301, 592)
+[node name="shadowCaster13" parent="shadowCasters" instance=ExtResource("14_a6e67")]
+position = Vector2(230, -2)
+scale = Vector2(0.276316, 1.18817)
 
-[node name="shadowCaster9" parent="shadowCaster6/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(235, 589)
+[node name="shadowCaster12" parent="shadowCasters" instance=ExtResource("14_a6e67")]
+position = Vector2(232, -163)
+scale = Vector2(0.281879, 1.01824)
 
-[node name="shadowCaster10" parent="shadowCaster6/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(173, 590)
+[node name="shadowCaster10" parent="shadowCasters" instance=ExtResource("14_a6e67")]
+position = Vector2(-48, -209)
+scale = Vector2(1.32847, 0.472222)
 
-[node name="shadowCaster6" parent="shadowCaster6/shadowCaster10/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(793, 12)
+[node name="shadowCaster11" parent="shadowCasters" instance=ExtResource("14_a6e67")]
+position = Vector2(246, 171)
+scale = Vector2(0.416667, 1.32584)
 
-[node name="shadowCaster7" parent="shadowCaster6/shadowCaster10/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(729, 10)
+[node name="shadowCaster14" parent="shadowCasters" instance=ExtResource("14_a6e67")]
+position = Vector2(208, 197)
+scale = Vector2(1.52941, 0.342282)
 
-[node name="shadowCaster8" parent="shadowCaster6/shadowCaster10/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(663, 13)
+[node name="shadowCaster15" parent="shadowCasters" instance=ExtResource("14_a6e67")]
+position = Vector2(140, 205)
+scale = Vector2(1.16071, 0.391892)
 
-[node name="shadowCaster9" parent="shadowCaster6/shadowCaster10/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(597, 10)
-
-[node name="shadowCaster10" parent="shadowCaster6/shadowCaster10/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(535, 11)
-
-[node name="shadowCaster6" parent="shadowCaster6/shadowCaster10/shadowCaster10/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(-604, -11)
-
-[node name="shadowCaster7" parent="shadowCaster6/shadowCaster10/shadowCaster10/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(-668, -13)
-
-[node name="shadowCaster8" parent="shadowCaster6/shadowCaster10/shadowCaster10/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(-672, -123)
-
-[node name="shadowCaster9" parent="shadowCaster6/shadowCaster10/shadowCaster10/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(-664, -72)
-
-[node name="shadowCaster10" parent="shadowCaster6/shadowCaster10/shadowCaster10/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(156, -603)
-
-[node name="shadowCaster10" parent="shadowCaster6/shadowCaster10/shadowCaster10/shadowCaster10/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(32, 53)
-
-[node name="shadowCaster10" parent="shadowCaster6/shadowCaster10/shadowCaster10/shadowCaster10/shadowCaster10/shadowCaster10" instance=ExtResource("17_6mrqo")]
-position = Vector2(3, 50)
-
-[node name="shadowCaster7" parent="." instance=ExtResource("17_6mrqo")]
-position = Vector2(274, -327)
-
-[node name="shadowCaster8" parent="." instance=ExtResource("17_6mrqo")]
-position = Vector2(208, -324)
-
-[node name="shadowCaster9" parent="." instance=ExtResource("17_6mrqo")]
-position = Vector2(142, -327)
-
-[node name="shadowCaster10" parent="." instance=ExtResource("17_6mrqo")]
-position = Vector2(80, -326)
+[node name="shadowCaster7" parent="shadowCasters" instance=ExtResource("14_a6e67")]
+position = Vector2(124, -203)
+scale = Vector2(1.16867, 0.350785)

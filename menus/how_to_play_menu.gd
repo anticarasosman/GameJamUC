@@ -1,9 +1,5 @@
-class_name InteractArea extends Area2D
+extends Control
 
-@export var interact_label: String = "none"
-@export var interact_type: String = "none"
-@export var interact_value: String = "none"
-var die = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,5 +8,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if die:
-		get_parent().queue_free()
+	pass
+
+
+func _on_volver_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://menus/main_menu.tscn")

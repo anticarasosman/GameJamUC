@@ -1,20 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3qtp5og4ky8t"]
+[gd_scene load_steps=18 format=3 uid="uid://b3qtp5og4ky8t"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_w8ds6"]
-[ext_resource type="Texture2D" uid="uid://bnh7mb78r8aqo" path="res://icon.svg" id="2_br1w5"]
 [ext_resource type="Script" path="res://Scripts/mouse.gd" id="2_c5lt4"]
+[ext_resource type="Texture2D" uid="uid://djsnnp6g8apes" path="res://assets/Sprites/Sprite_sheets/gaymer.png" id="4_3h8pi"]
 [ext_resource type="Script" path="res://Scripts/shape_cast_2d.gd" id="4_fbbls"]
+[ext_resource type="Script" path="res://Scripts/look_at_mouse.gd" id="5_ebm4e"]
+[ext_resource type="PackedScene" uid="uid://buv5odeltbcbb" path="res://Scenes/aplauso.tscn" id="6_2vhwi"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a4aqy"]
 cull_mode = 1
-polygon = PackedVector2Array(-35, 36, 34, 36, 35, -36, 13, -36, 111.998, -455, -109.002, -456, -14, -36, -35, -36)
+polygon = PackedVector2Array(-35, 36, 34, 36, 35, -36, 13, -36, 1632.99, -3501.01, -1622.01, -3466.99, -14, -36, -35, -36)
 
-[sub_resource type="Gradient" id="Gradient_akb4d"]
-offsets = PackedFloat32Array(0, 0.63)
+[sub_resource type="Gradient" id="Gradient_hf7vs"]
+offsets = PackedFloat32Array(0, 0.883117)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_uhpct"]
-gradient = SubResource("Gradient_akb4d")
+gradient = SubResource("Gradient_hf7vs")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -27,11 +29,65 @@ size = Vector2(59.75, 63)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_4qayg"]
 
+[sub_resource type="Animation" id="Animation_h8ger"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_sgvyy"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_g1g3e"]
+resource_name = "walking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3, 0.433333, 0.6, 0.8, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2oy88"]
+_data = {
+"RESET": SubResource("Animation_h8ger"),
+"idle": SubResource("Animation_sgvyy"),
+"walking": SubResource("Animation_g1g3e")
+}
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_w8ds6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.825, 0.825)
+zoom = Vector2(1.25, 1.25)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 script = ExtResource("2_c5lt4")
@@ -61,11 +117,6 @@ shadow_filter = 1
 shadow_filter_smooth = 2.7
 shadow_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_uhpct")
-
-[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
-rotation = 1.5712
-scale = Vector2(0.570313, 0.570313)
-texture = ExtResource("2_br1w5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7ulce")
@@ -102,6 +153,24 @@ collision_mask = 8
 collide_with_areas = true
 script = ExtResource("4_fbbls")
 player = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1.81899e-12, 0)
+scale = Vector2(17.6295, 15.4922)
+texture = ExtResource("4_3h8pi")
+offset = Vector2(10.8909, 4.32477)
+hframes = 7
+script = ExtResource("5_ebm4e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_2oy88")
+}
+
+[node name="aplauso" parent="." instance=ExtResource("6_2vhwi")]
+position = Vector2(1.52588e-05, 2.28882e-05)
+scale = Vector2(8.5552, 11.2936)
 
 [connection signal="area_entered" from="InteractionComponents/Player_interaction" to="." method="_on_player_interaction_area_entered"]
 [connection signal="area_exited" from="InteractionComponents/Player_interaction" to="." method="_on_player_interaction_area_exited"]

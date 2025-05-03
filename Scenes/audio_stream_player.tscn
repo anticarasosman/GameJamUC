@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxfhdkckdevp3"]
+
+[ext_resource type="AudioStream" uid="uid://bkiyym2xraqnb" path="res://assets/music/Spazzmatica-Polka(chosic.com).mp3" id="1_5c7ub"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_5c7ub")
+volume_db = -33.99
+autoplay = true

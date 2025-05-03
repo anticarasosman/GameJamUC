@@ -1,20 +1,104 @@
-[gd_scene load_steps=5 format=3 uid="uid://b705ygnajy0lf"]
+[gd_scene load_steps=9 format=3 uid="uid://b705ygnajy0lf"]
 
-[ext_resource type="Texture2D" uid="uid://43ppq2ic658t" path="res://sprites/Fairy.png" id="1_py808"]
 [ext_resource type="Script" path="res://Scripts/fairy.gd" id="1_yuaeq"]
+[ext_resource type="Texture2D" uid="uid://db2k02bfakqfl" path="res://assets/Sprites/Sprite_sheets/ferifokindais.png" id="2_xc6o2"]
 [ext_resource type="PackedScene" uid="uid://cmp6adnak8w61" path="res://Scenes/interactables/interact_area.tscn" id="3_mckrr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_itiri"]
-radius = 282.297
+radius = 147.075
+
+[sub_resource type="Animation" id="Animation_m7vp5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fairy_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fairy_sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_xc6o2")]
+}
+
+[sub_resource type="Animation" id="Animation_aaxpn"]
+resource_name = "brillo"
+length = 0.44
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fairy_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.00192037, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 0]
+}
+
+[sub_resource type="Animation" id="Animation_i07yl"]
+resource_name = "death"
+length = 0.54
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fairy_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_xc6o2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fairy_sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.166667, 0.233333, 0.3, 0.366667, 0.433333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2h52j"]
+_data = {
+"RESET": SubResource("Animation_m7vp5"),
+"brillo": SubResource("Animation_aaxpn"),
+"death": SubResource("Animation_i07yl")
+}
 
 [node name="Fairy" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_yuaeq")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.109, 0.109)
-texture = ExtResource("1_py808")
+[node name="fairy_sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(4.76837e-07, -1.19209e-07)
+scale = Vector2(6.2, 4.61333)
+texture = ExtResource("2_xc6o2")
+offset = Vector2(13.3978, 6.23209)
+hframes = 7
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.109, 0.109)
@@ -22,7 +106,12 @@ shape = SubResource("CircleShape2D_itiri")
 
 [node name="InteractArea" parent="." instance=ExtResource("3_mckrr")]
 modulate = Color(1, 1, 0.0588235, 1)
-scale = Vector2(0.49, 0.49)
+scale = Vector2(0.281186, 0.281056)
 interact_label = "InteractVampire"
 interact_type = "Fairy"
 interact_value = ""
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2h52j")
+}

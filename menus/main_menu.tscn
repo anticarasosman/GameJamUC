@@ -1,0 +1,192 @@
+[gd_scene load_steps=6 format=3 uid="uid://nfgr8bhnxq5k"]
+
+[ext_resource type="Script" path="res://menus/main_menu.gd" id="1_c42jd"]
+[ext_resource type="Texture2D" uid="uid://6tghxspqjdim" path="res://menus/comojugar.png" id="2_gijnp"]
+[ext_resource type="FontFile" uid="uid://dr5oka25mly1t" path="res://menus/vhs-gothic.ttf" id="3_0lexv"]
+
+[sub_resource type="Gradient" id="Gradient_10sgs"]
+offsets = PackedFloat32Array(0, 0.63)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xjnf3"]
+gradient = SubResource("Gradient_10sgs")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c42jd")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -56.0
+offset_top = -64.0
+offset_right = 2204.0
+offset_bottom = 1146.0
+texture = ExtResource("2_gijnp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 304.0
+offset_right = 701.0
+offset_bottom = 400.0
+theme_override_fonts/font = ExtResource("3_0lexv")
+theme_override_font_sizes/font_size = 24
+text = "Jugar"
+
+[node name="InfoButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 415.0
+offset_right = 701.0
+offset_bottom = 504.0
+theme_override_fonts/font = ExtResource("3_0lexv")
+theme_override_font_sizes/font_size = 22
+text = "Cómo jugar"
+
+[node name="SalirButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 528.0
+offset_right = 641.0
+offset_bottom = 591.0
+theme_override_fonts/font = ExtResource("3_0lexv")
+text = "Salir"
+
+[node name="GameTitle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 112.0
+offset_right = 987.0
+offset_bottom = 312.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.894922, 0.894922, 0.894922, 1)
+theme_override_fonts/font = ExtResource("3_0lexv")
+theme_override_font_sizes/font_size = 84
+text = "Sanguis domus
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.314316, 0.314316, 0.314316, 1)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Shadow" type="PointLight2D" parent="Node"]
+position = Vector2(576, 208)
+scale = Vector2(15.5078, 2.76563)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_xjnf3")
+
+[node name="Shadow2" type="PointLight2D" parent="Node"]
+position = Vector2(567.969, 352)
+scale = Vector2(5.00098, 2.76563)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_xjnf3")
+
+[node name="Shadow3" type="PointLight2D" parent="Node"]
+position = Vector2(560, 456)
+scale = Vector2(6.62891, 2.76563)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_xjnf3")
+
+[node name="Shadow4" type="PointLight2D" parent="Node"]
+position = Vector2(568, 552)
+scale = Vector2(3.86328, 2.76563)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_xjnf3")
+
+[node name="Shadow5" type="PointLight2D" parent="Node"]
+position = Vector2(231.938, 204.25)
+scale = Vector2(3.25195, 2.89844)
+color = Color(0.506397, 0.0330084, 1.92523e-07, 1)
+energy = 1.3
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_xjnf3")
+
+[node name="Shadow6" type="PointLight2D" parent="Node"]
+position = Vector2(648, 472)
+scale = Vector2(3.25195, 2.89844)
+color = Color(0.506397, 0.0330084, 1.92523e-07, 1)
+energy = 1.3
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_xjnf3")
+
+[node name="Shadow7" type="PointLight2D" parent="Node"]
+position = Vector2(928, 176)
+scale = Vector2(3.25195, 2.89844)
+color = Color(0.506397, 0.0330084, 1.92523e-07, 1)
+energy = 1.3
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_xjnf3")
+
+[node name="Shadow8" type="PointLight2D" parent="Node"]
+position = Vector2(143.938, 540.25)
+scale = Vector2(3.25195, 2.89844)
+color = Color(0.111031, 0.275397, 0.411539, 1)
+energy = 1.3
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_xjnf3")
+
+[node name="Shadow9" type="PointLight2D" parent="Node"]
+position = Vector2(1048, 447)
+scale = Vector2(3.25195, 2.89844)
+color = Color(0.18988, 0.229357, 0.50641, 1)
+energy = 1.3
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_xjnf3")
+
+[node name="Shadow10" type="PointLight2D" parent="Node"]
+position = Vector2(600, 48)
+scale = Vector2(3.25195, 2.89844)
+color = Color(0.28919, 0.268317, 0.0853959, 1)
+energy = 1.3
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_xjnf3")
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="InfoButton" to="." method="_on_info_button_pressed"]
+[connection signal="pressed" from="SalirButton" to="." method="_on_salir_button_pressed"]

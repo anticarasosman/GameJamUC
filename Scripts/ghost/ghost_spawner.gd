@@ -8,17 +8,21 @@ var horizontal_pos: int
 var vertical_pos: int
 
 func _ready():
-	var ghost_wait_time = randi_range(3, 10)
+	var ghost_wait_time = randi_range(7, 10)
 	var starting_horizontal_pos = self.global_position.x
 	var starting_vertical_pos = self.global_position.y
 	while (!Global.game_over):
 		await get_tree().create_timer(ghost_wait_time).timeout
-		horizontal_pos = randi_range(300, horizontal_range)
-		horizontal_pos = randi_range(300, vertical_range)
+		horizontal_pos = randi_range(600, horizontal_range)
+		horizontal_pos = randi_range(600, vertical_range)
 		if Global.current_enemies < Global.enemy_budget:
+			Global.enemy_budget += 3
 			var ghost = ghost_scene.instantiate()
 			var target = get_node(player)
 			ghost.target = target
 			ghost.global_position.x = target.global_position.x + horizontal_pos
 			ghost.global_position.y = target.global_position.y + vertical_pos
 			add_child(ghost)
+
+func _seen():
+	pass

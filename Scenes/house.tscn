@@ -1,16 +1,198 @@
-[gd_scene load_steps=3 format=3 uid="uid://ylbtwpucf5mg"]
+[gd_scene load_steps=9 format=3 uid="uid://ylbtwpucf5mg"]
 
-[ext_resource type="Texture2D" uid="uid://cagfij5y1kglg" path="res://sprites/image.png" id="1_6rxhu"]
-[ext_resource type="Texture2D" uid="uid://bdof3hyafs77e" path="res://sprites/XvZPy+ (1).png" id="1_cyfju"]
+[ext_resource type="Script" path="res://Scripts/house.gd" id="1_atd53"]
+[ext_resource type="Texture2D" uid="uid://c0624fmpanrpi" path="res://assets/Sprites/enviorment/exterior.png" id="1_uc2c5"]
+[ext_resource type="Texture2D" uid="uid://ckqa73de5otrc" path="res://assets/Sprites/enviorment/casaypinos.png" id="2_p6nye"]
+[ext_resource type="Texture2D" uid="uid://bsf7m5ixd3q6p" path="res://assets/Sprites/enviorment/lluviasangre.png" id="3_ewtfa"]
+
+[sub_resource type="Animation" id="Animation_7ull4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("exterior:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rain2/rain:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rain2/rain2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rain2/rain3:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("rain2/rain4:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_ye4n1"]
+resource_name = "leafs_moving"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("exterior:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 0]
+}
+
+[sub_resource type="Animation" id="Animation_4nrom"]
+resource_name = "rain"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rain2/rain:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rain2/rain2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rain2/rain3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rain2/rain4:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xu3jl"]
+_data = {
+"RESET": SubResource("Animation_7ull4"),
+"leafs_moving": SubResource("Animation_ye4n1"),
+"rain": SubResource("Animation_4nrom")
+}
 
 [node name="House" type="Node2D"]
+script = ExtResource("1_atd53")
 
-[node name="Forest" type="Sprite2D" parent="."]
-position = Vector2(543, 279)
-scale = Vector2(2.01328, 2.12917)
-texture = ExtResource("1_cyfju")
+[node name="rain2" type="Node" parent="."]
 
-[node name="Room" type="Sprite2D" parent="."]
-position = Vector2(552, 332.75)
-scale = Vector2(1.87372, 1.48145)
-texture = ExtResource("1_6rxhu")
+[node name="rain" type="Sprite2D" parent="rain2"]
+texture_filter = 1
+position = Vector2(-402, -397)
+scale = Vector2(6.41221, 5.4)
+texture = ExtResource("3_ewtfa")
+hframes = 8
+frame = 1
+
+[node name="rain2" type="Sprite2D" parent="rain2"]
+texture_filter = 1
+position = Vector2(414, -405)
+scale = Vector2(6.29008, 5.30667)
+texture = ExtResource("3_ewtfa")
+hframes = 7
+frame = 1
+
+[node name="rain3" type="Sprite2D" parent="rain2"]
+texture_filter = 1
+position = Vector2(-408, 414)
+scale = Vector2(6.22901, 5.48)
+texture = ExtResource("3_ewtfa")
+hframes = 8
+frame = 1
+
+[node name="rain4" type="Sprite2D" parent="rain2"]
+texture_filter = 1
+position = Vector2(424, 395)
+scale = Vector2(6.39695, 5.26667)
+texture = ExtResource("3_ewtfa")
+hframes = 8
+frame = 1
+
+[node name="exterior" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(10.9067, 10.68)
+texture = ExtResource("1_uc2c5")
+hframes = 7
+frame = 1
+
+[node name="casa_y_pinos" type="Sprite2D" parent="."]
+texture = ExtResource("2_p6nye")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xu3jl")
+}

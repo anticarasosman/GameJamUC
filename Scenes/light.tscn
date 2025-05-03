@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://k13bvronap2n"]
+
+[ext_resource type="Script" path="res://Scripts/mouse.gd" id="1_qyc2i"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_40ycw"]
+cull_mode = 1
+polygon = PackedVector2Array(-773.995, 1261, 869.005, 1250, 829.001, 387.997, 861.997, -870.003, 843.994, -1686, -790.006, -1628, -801.003, -925.997, -811, -59.9971)
+
+[sub_resource type="Gradient" id="Gradient_akb4d"]
+offsets = PackedFloat32Array(0, 0.63)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8l610"]
+gradient = SubResource("Gradient_akb4d")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Light" type="Node2D"]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+script = ExtResource("1_qyc2i")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Marker2D"]
+rotation = 1.5708
+occluder = SubResource("OccluderPolygon2D_40ycw")
+
+[node name="Light" type="Node2D" parent="Marker2D"]
+
+[node name="TextureLight" type="PointLight2D" parent="Marker2D/Light"]
+visible = false
+position = Vector2(0, 3.33786e-06)
+scale = Vector2(10, 10)
+energy = 0.59
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+texture = SubResource("GradientTexture2D_8l610")
+
+[node name="Shadow" type="PointLight2D" parent="Marker2D/Light"]
+position = Vector2(-1.13249e-05, 1.15037e-05)
+scale = Vector2(2.76563, 2.76563)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_8l610")

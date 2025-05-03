@@ -20,5 +20,5 @@ func _ready():
 				vampire_spawner_3.spawnVampire()
 			elif vampire_position == 3:
 				vampire_spawner_4.spawnVampire()
-			Global.current_enemies += 0
+			Global.current_enemies += 1
 		vampire_wait_time = randi_range(3, 10)

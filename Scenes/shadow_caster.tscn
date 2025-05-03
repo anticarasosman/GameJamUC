@@ -1,6 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgvvufqh3438l"]
-
-[ext_resource type="Texture2D" uid="uid://0e4upq85hgio" path="res://icon.svg" id="1_5rdyd"]
+[gd_scene load_steps=4 format=3 uid="uid://dgvvufqh3438l"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x3hva"]
 blend_mode = 1
@@ -18,7 +16,6 @@ size = Vector2(66, 63)
 position = Vector2(0, -1)
 rotation = 3.13847
 scale = Vector2(0.539063, 0.5)
-texture = ExtResource("1_5rdyd")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
 material = SubResource("CanvasItemMaterial_x3hva")

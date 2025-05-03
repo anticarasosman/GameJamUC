@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=3 uid="uid://buv5odeltbcbb"]
+
+[ext_resource type="Script" path="res://Scenes/aplauso.gd" id="1_sa20u"]
+[ext_resource type="Texture2D" uid="uid://bm7irjo73h14y" path="res://assets/Sprites/Sprite_sheets/clap.png" id="1_vyb68"]
+
+[sub_resource type="Animation" id="Animation_1oude"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("clap_hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4na1p"]
+resource_name = "clap"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("clap_hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xiav8"]
+_data = {
+"RESET": SubResource("Animation_1oude"),
+"clap": SubResource("Animation_4na1p")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkktt"]
+size = Vector2(25, 12)
+
+[node name="aplauso" type="Node2D"]
+script = ExtResource("1_sa20u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_vyb68")
+offset = Vector2(12, 4)
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xiav8")
+}
+
+[node name="clap_hitbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="clap_hitbox"]
+shape = SubResource("RectangleShape2D_bkktt")
+debug_color = Color(0.988235, 0, 0.0196078, 0.419608)
+
+[connection signal="area_entered" from="clap_hitbox" to="." method="_on_clap_hitbox_area_entered"]

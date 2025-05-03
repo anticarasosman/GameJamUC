@@ -3,22 +3,23 @@ extends Node2D
 var playerDetected = false
 var doorDetected = false
 var asking = false
-var SPEED = 600
+var SPEED = 100
 var direction: int
 var current_player: Node2D
+var tween = create_tween()
 
 var KILL_TIME = 15.0
 @onready var kill_timer: Label = $KillTime
+@onready var animation_player = $AnimationPlayer
 
 func _ready():
-	#line_edit.connect("text_submitted", Callable(self, "_on_ResponseInput_text_submitted"))
-	pass
+	animation_player.play("walking")
 	
 func _process(_delta: float) -> void:
 	match direction:
-		0: position.y += SPEED * _delta
-		1: position.y -= SPEED * _delta
-		2: position.x -= SPEED * _delta
+		0: position.y += SPEED * _delta; rotation = -80
+		1: position.y -= SPEED * _delta; rotation = 80
+		2: position.x -= SPEED * _delta; rotation = 110
 		3: position.x += SPEED * _delta
 	
 	kill_timer.text = "%.2f" % KILL_TIME
@@ -34,6 +35,8 @@ func _on_interact_door_area_entered(area: Area2D) -> void:
 	if area.name == "Open_door":
 		SPEED = 0
 		doorDetected = true
+		area.get_parent().animation_player.play("knock")
+		area.get_parent().audio_stream_player_2d.play()
 
 func _on_interact_player_area_entered(area: Area2D) -> void:
 	if area.name == "Player_interaction":
@@ -49,6 +52,7 @@ func receive_interaction():
 		player.show_dialog("ME DEJAS ENTRAR?")
 
 func cancel_attack():
+	Global.enemy_budget -= 1
 	queue_free()
 	
 func kill_player():
