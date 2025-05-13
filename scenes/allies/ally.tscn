@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7aqqhj6qnbbu"]
+
+[ext_resource type="Script" path="res://scripts/Ally/ally.gd" id="1_767i0"]
+[ext_resource type="Texture2D" uid="uid://be02d6ql3ye8s" path="res://sprites/Ally-removebg-preview.png" id="2_isgbx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ynlrs"]
+
+[node name="Ally" type="Node2D"]
+scale = Vector2(5.42772, 4.89986)
+script = ExtResource("1_767i0")
+
+[node name="Ally Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.0426439, 0.0413534)
+texture = ExtResource("2_isgbx")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ynlrs")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
